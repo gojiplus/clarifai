@@ -1,0 +1,14 @@
+Package: clarifai
+Title: Access to Clarifai API
+Version: 0.2
+Authors@R: person("Gaurav", "Sood", email = "gsood07@gmail.com", role = c("aut", "cre"))
+Maintainer: Gaurav Sood <gsood07@gmail.com>
+Description: Get description of images from Clarifai API. 
+URL: http://github.com/soodoku/clarifai
+BugReports: http://github.com/soodoku/clarifai/issues
+Depends: R (>= 3.2.0)
+License: GPL (>= 2)
+LazyData: true
+Imports: httr,
+    XML,
+    curl
