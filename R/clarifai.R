@@ -9,7 +9,7 @@
 #' Your need credentials to use this application. 
 #' If you haven't already, you can get this at \url{https://developer.clarifai.com/}.
 #' 
-#' @importFrom curl curl curl_download
+#' @importFrom curl new_handle handle_setopt handle_setform handle curl curl_download
 #' @importFrom jsonlite fromJSON 
 #' @docType package
 #' @author Gaurav Sood
