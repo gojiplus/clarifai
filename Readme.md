@@ -15,12 +15,14 @@ devtools::install_github("soodoku/clarifai")
 ```
 
 
-### Usage
+### Using clarifai
 
 Load up the lib:
 ```{r load_lib}
 library(clarifai)
 ```
+
+**Authentication**
 
 Start by setting Client ID and secret, which you can get from [https://developer.clarifai.com/](https://developer.clarifai.com/)
 ```{r}
@@ -31,6 +33,16 @@ Next, get the token (the function also sets it):
 ```{r}
 get_token()
 ```
+
+**Get Information**
+
+Get information about your application:
+```{r}
+get_info()
+```
+
+
+**Get Tags**
 
 We are now all set. Let's play. Get tags of a remote image:
 
@@ -46,10 +58,6 @@ res$results[,6][[1]][[2]][[1]][1:5]
 ## 0.9993986 0.9980315 0.9970427 0.9950421 0.9950128
 ```
 
-Get information about your application:
-```{r}
-get_info()
-```
 
 Get tags for a local image:
 ```{r}
@@ -57,6 +65,8 @@ tag_image("path_to_img")
 ```
 
 Provide feedback about tags for an image, including suggesting new tags, suggesting that some tags be removed etc. 
+
+** Provide Feedback**
 
 ```{r feedback}
 feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
