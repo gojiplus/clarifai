@@ -16,6 +16,7 @@ devtools::install_github("soodoku/clarifai")
 
 
 ### Using clarifai
+-----------------------------------
 
 Load up the lib:
 ```{r load_lib}
@@ -76,5 +77,6 @@ feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="su
 ## [1] "Feedback successfully recorded. "
 ```
 
+-----------------------------------
 ### License
 Scripts are released under [GNU V3](http://www.gnu.org/licenses/gpl-3.0.en.html).
