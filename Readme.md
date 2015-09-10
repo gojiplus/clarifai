@@ -10,8 +10,8 @@ Find out what is in an image with perhaps the best off the shelf solution: [clar
 To get the current development version from github:
 
 ```{r install}
-# install.packages("devtools")
-# devtools::install_github("soodoku/clarifair")
+install.packages("devtools")
+devtools::install_github("soodoku/clarifai")
 ```
 
 ### Usage
