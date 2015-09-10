@@ -16,6 +16,11 @@ devtools::install_github("soodoku/clarifai")
 
 ### Usage
 
+Load up the lib:
+```{r load_lib}
+library(clarifai)
+```
+
 Start by setting Client ID and secret, which you can get from [https://developer.clarifai.com/](https://developer.clarifai.com/)
 ```{r}
 secret_id(c("client_id", "secret"))
