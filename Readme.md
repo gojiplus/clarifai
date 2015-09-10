@@ -28,6 +28,8 @@ get_token()
 
 We are now all set. Let's play. Get tags of a remote image:
 
+![Metro North](inst/extdata/metro-north.JPG)
+
 ```{r}
 res <- tag_image_url("http://www.clarifai.com/img/metro-north.jpg")
 
