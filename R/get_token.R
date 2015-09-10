@@ -17,10 +17,12 @@ get_token <- function()
     h <- new_handle()
 	handle_setopt(h, customrequest = "POST")
 	handle_setform(h, grant_type='client_credentials', client_id=app_id, client_secret=app_pass)
-	token_con    <- curl(url="https://api.clarifai.com/v1/token/", handle=h)
-	token_info   <- fromJSON(token_con)
+	token_con    <- curl_fetch_memory(url="https://api.clarifai.com/v1/token/", handle=h)
+	token_info   <- fromJSON(rawToChar(token_con$content))
 
+	options(ClarifaiToken = token_info$access_token)
 	return(invisible(token_info))
+
 }
 
 
