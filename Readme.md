@@ -3,16 +3,17 @@
 [![GPL-3.0](http://img.shields.io/:license-gpl-blue.svg)](http://opensource.org/licenses/GPL-3.0)
 [![Build Status](https://travis-ci.org/soodoku/clarifai.svg?branch=master)](https://travis-ci.org/soodoku/clarifai)
 
-Find out what is in an image with perhaps the best off the shelf solution: [clarifai.com](http://clarifai.com). Clarifai provides descriptors for images along with how confident it is that each of the descriptors are part of the image. It is a bit magical.
+Find out what is in a (moving) image with perhaps the best off-the-shelf solution: [clarifai.com](http://clarifai.com). Clarifai provides descriptors for images along with how confident it is about each of the descriptors. It is a bit magical. (See also the 2013 [ImageNet LSVR Classification Results](http://www.image-net.org/challenges/LSVRC/2013/results.php).)
 
 ### Installation
 
-To get the current development version from github:
+To get the current development version from GitHub:
 
 ```{r install}
 install.packages("devtools")
 devtools::install_github("soodoku/clarifai")
 ```
+
 
 ### Usage
 
@@ -53,6 +54,18 @@ get_info()
 Get tags for a local image:
 ```{r}
 tag_image("path_to_img")
+```
+
+Provide feedback about tags for an image, including suggesting new tags, suggesting that some tags be removed etc. 
+
+```{r feedback}
+feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
+
+## $status_code
+## [1] "OK"
+
+## $status_msg
+## [1] "Feedback successfully recorded. "
 ```
 
 #### License
