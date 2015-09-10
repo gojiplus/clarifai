@@ -3,6 +3,8 @@
 [![GPL-3.0](http://img.shields.io/:license-gpl-blue.svg)](http://opensource.org/licenses/GPL-3.0)
 [![Build Status](https://travis-ci.org/soodoku/clarifai.svg?branch=master)](https://travis-ci.org/soodoku/clarifai)
 
+Find out what is in an image with perhaps the best off the shelf solution: [clarifai.com](http://clarifai.com). Clarifai provides descriptors for images along with how confident it is that each of the descriptors are part of the image. It is a bit magical.
+
 ### Installation
 
 To get the current development version from github:
