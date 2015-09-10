@@ -4,7 +4,7 @@
 #' @export
 #' @references \url{https://developer.clarifai.com/}
 #' @examples \dontrun{
-#' get_token()
+#' get_info()
 #' }
 
 get_info <- function()

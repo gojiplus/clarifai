@@ -14,7 +14,7 @@ Tag Remote Images
 }
 \examples{
 \dontrun{
-get_image_urls()
+tag_image_url(img_url="url_of_image")
 }
 }
 \references{

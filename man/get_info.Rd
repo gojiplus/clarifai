@@ -11,7 +11,7 @@ Learn about the application -- what are maximum sizes allowed etc.
 }
 \examples{
 \dontrun{
-get_token()
+get_info()
 }
 }
 \references{

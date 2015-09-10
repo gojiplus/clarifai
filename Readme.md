@@ -18,20 +18,31 @@ Start by setting Client ID and secret, which you can get from [https://developer
 secret_id(c("client_id", "secret"))
 ```
 
-Next, get the token (it also sets it):
+Next, get the token (the function also sets it):
 ```{r}
 get_token()
-``
+```
 
-Next, let's play. Get tags of an image:
+We are now all set. Let's play. Get tags of a remote image:
 
 ```{r}
-tag_image_url("http://www.clarifai.com/img/metro-north.jpg")
+res <- tag_image_url("http://www.clarifai.com/img/metro-north.jpg")
+
+res$results[,6][[1]][[1]][[2]][1:5]
+## "train"          "railroad"       "station"        "rail"           "transportation"
+
+res$results[,6][[1]][[2]][[1]][1:5]
+## 0.9993986 0.9980315 0.9970427 0.9950421 0.9950128
 ```
 
 Get information about your application:
 ```{r}
 get_info()
+```
+
+Get tags for a local image:
+```{r}
+tag_image("path_to_img")
 ```
 
 #### License

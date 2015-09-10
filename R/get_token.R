@@ -1,6 +1,6 @@
 #' Get Access Token
 #'
-#' Once you have set your Application ID and Secret via \link{\code{secret_id}}, get the access token.
+#' Once you have set your Application ID and Secret via \code{\link{secret_id}}, get the access token.
 #' 
 #' @return a list with 4 things: access_token, token_type, expires_in, scope
 #' @export
