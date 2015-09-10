@@ -3,7 +3,6 @@
 export(get_info)
 export(get_token)
 export(secret_id)
-export(submitImage)
 export(tag_image_url)
 import(curl)
 importFrom(jsonlite,fromJSON)

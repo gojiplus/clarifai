@@ -13,5 +13,26 @@ To get the current development version from github:
 
 ### Usage
 
+Start by setting Client ID and secret, which you can get from [https://developer.clarifai.com/](https://developer.clarifai.com/)
+```{r}
+secret_id(c("client_id", "secret"))
+```
+
+Next, get the token (it also sets it):
+```{r}
+get_token()
+``
+
+Next, let's play. Get tags of an image:
+
+```{r}
+tag_image_url("http://www.clarifai.com/img/metro-north.jpg")
+```
+
+Get information about your application:
+```{r}
+get_info()
+```
+
 #### License
 Scripts are released under [GNU V3](http://www.gnu.org/licenses/gpl-3.0.en.html).
