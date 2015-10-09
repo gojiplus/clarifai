@@ -79,4 +79,4 @@ feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="su
 
 -----------------------------------
 ### License
-Scripts are released under [GNU V3](http://www.gnu.org/licenses/gpl-3.0.en.html).
+Scripts are released under [MIT License](https://opensource.org/licenses/MIT).
