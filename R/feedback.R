@@ -8,13 +8,16 @@
 #' search_click which tag(s) where clicked on
 #' similar_docids similar documents 
 #' dissimilar_docids dissimilar documents
+#' @param file_path image on which the feedback is being provided
+#' @param feedback_value what tags to add, remove etc.
+#' 
 #' @export
 #' @references \url{https://developer.clarifai.com/}
 #' @examples \dontrun{
 #' feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
 #' }
 
-feedback <- function(file_path = path_to_image, feedback_type='add_tags', feedback_value="")
+feedback <- function(file_path = "path_to_image", feedback_type='add_tags', feedback_value="")
 {
     app_id=getOption("ClarifaiId"); app_pass=getOption("ClarifaiSecret")
     if(is.null(app_id) | is.null(app_pass)) stop("Please set application id and password using secret_id(c('app_id', 'app_pass')).")
