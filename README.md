@@ -9,7 +9,7 @@ Find out what is in a (moving) image with perhaps the best off-the-shelf solutio
 
 To get the current development version from GitHub:
 
-```{r install}
+```r
 install.packages("devtools")
 devtools::install_github("soodoku/clarifai")
 ```
@@ -19,26 +19,26 @@ devtools::install_github("soodoku/clarifai")
 -----------------------------------
 
 Load up the lib:
-```{r load_lib}
+```r
 library(clarifai)
 ```
 
 #### Authentication
 
 Start by setting Client ID and secret, which you can get from [https://developer.clarifai.com/](https://developer.clarifai.com/)
-```{r}
+```r
 secret_id(c("client_id", "secret"))
 ```
 
 Next, get the token (the function also sets it):
-```{r}
+```r
 get_token()
 ```
 
 #### Get Information
 
 Get information about your application:
-```{r}
+```r
 get_info()
 ```
 
@@ -48,7 +48,7 @@ We are now all set. Let's play. Get tags of a remote image:
 
 ![Metro North](https://raw.githubusercontent.com/soodoku/clarifai/master/inst/extdata/metro-north.jpg)
 
-```{r}
+```r
 res <- tag_image_url("http://www.clarifai.com/img/metro-north.jpg")
 
 res$results[,6][[1]][[1]][[2]][1:5]
@@ -59,7 +59,7 @@ res$results[,6][[1]][[2]][[1]][1:5]
 ```
 
 Get tags for a local image:
-```{r}
+```r
 tag_image("path_to_img")
 ```
 
@@ -67,7 +67,7 @@ Provide feedback about tags for an image, including suggesting new tags, suggest
 
 #### Provide Feedback
 
-```{r feedback}
+```r
 feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
 
 ## $status_code
