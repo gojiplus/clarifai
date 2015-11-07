@@ -15,3 +15,16 @@
 #' @docType package
 #' @author Gaurav Sood
 NULL
+
+#' Check if authentication information is there
+#' 
+
+clarifai_CHECKAUTH <- 
+function() {
+
+	app_id = Sys.getenv('ClarifaiId')
+	app_pass = Sys.getenv('ClarifaiSecret')
+
+    if(identical(app_id, "") | identical(app_pass, "")) stop("Please set application token using secret_id(c('app_id', 'app_pass')).")
+
+}

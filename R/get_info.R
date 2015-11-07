@@ -9,14 +9,11 @@
 
 get_info <- function()
 {
-	app_id = Sys.getenv('ClarifaiId')
-	app_pass = Sys.getenv('ClarifaiSecret')
-
-    if(identical(app_id, "") | identical(app_pass, "")) stop("Please set application token using secret_id(c('app_id', 'app_pass')).")
-	
+	clarifai_CHECKAUTH()
+		
     h <- new_handle()
 	handle_setopt(h,  customrequest = "GET")
-	handle_setheaders(h, "Authorization" = paste0("Bearer ", getOption("ClarifaiToken")))
+	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
 	info_con   <- curl_fetch_memory("https://api.clarifai.com/v1/info/", handle=h)
 	info       <- fromJSON(rawToChar(info_con$content))
 

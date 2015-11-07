@@ -19,12 +19,12 @@
 
 feedback <- function(file_path = "path_to_image", feedback_type='add_tags', feedback_value="")
 {
-    app_id=getOption("ClarifaiId"); app_pass=getOption("ClarifaiSecret")
-    if(is.null(app_id) | is.null(app_pass)) stop("Please set application id and password using secret_id(c('app_id', 'app_pass')).")
-	
+   
+    clarifai_CHECKAUTH()
+
     h <- new_handle()
 	handle_setopt(h,  customrequest = "POST")
-	handle_setheaders(h, "Authorization" = paste0("Bearer ", getOption("ClarifaiToken")))
+	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
 
 	switch(feedback_type, 
 						add_tags     = {handle_setform(h, encoded_image = form_file(file_path), add_tags          = feedback_value)},
