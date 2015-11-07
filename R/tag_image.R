@@ -10,9 +10,9 @@
 tag_image<- function(file_path=NULL) {
 	
     clarifai_CHECKAUTH()
-    
-	# if(RCurl::url.exists(img_url))
-    
+        
+    if(!file.exists(file_path)) stop("File Doesn't Exist. Please check the path.")
+
     h <- new_handle()
 	handle_setopt(h,  customrequest = "POST")
 	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
