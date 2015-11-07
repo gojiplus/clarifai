@@ -9,11 +9,13 @@
 #' get_token()
 #' }
 
-get_token <- function()
-{
-    app_id=getOption("ClarifaiId"); app_pass=getOption("ClarifaiSecret")
-    if(is.null(app_id) | is.null(app_pass)) stop("Please set application id and password using secret_id(c('app_id', 'app_pass')).")
+get_token <- function() {
 	
+    app_id = Sys.getenv('ClarifaiId')
+	app_pass = Sys.getenv('ClarifaiSecret')
+
+    if(identical(app_id, "") | identical(app_pass, "")) stop("Please set application token using secret_id(c('app_id', 'app_pass')).")
+
     h <- new_handle()
 	handle_setopt(h, customrequest = "POST")
 	handle_setform(h, grant_type='client_credentials', client_id=app_id, client_secret=app_pass)

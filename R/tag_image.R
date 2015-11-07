@@ -7,11 +7,13 @@
 #' tag_image(file_path="path_to_image")
 #' }
 
-tag_image<- function(file_path=NULL)
-{
-    app_id=getOption("ClarifaiId"); app_pass=getOption("ClarifaiSecret")
-    if(is.null(app_id) | is.null(app_pass)) stop("Please set application id and password using secret_id(c('app_id', 'app_pass')).")
+tag_image<- function(file_path=NULL) {
 	
+    app_id = Sys.getenv('ClarifaiId')
+	app_pass = Sys.getenv('ClarifaiSecret')
+
+    if(identical(app_id, "") | identical(app_pass, "")) stop("Please set application token using secret_id(c('app_id', 'app_pass')).")
+
 	# if(RCurl::url.exists(img_url))
     
     h <- new_handle()

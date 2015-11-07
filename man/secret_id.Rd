@@ -4,14 +4,20 @@
 \alias{secret_id}
 \title{Sets Application ID and Secret}
 \usage{
-secret_id(appdetails = NULL)
+secret_id(appdetails = NULL, force = FALSE)
 }
 \arguments{
-\item{appdetails}{Required; A vector of client_id, client_secret. Get these from \url{https://developer.clarifai.com/}. 
+\item{appdetails}{A vector of client_id, client_secret. Get these from \url{https://developer.clarifai.com/}. 
 Set them before you use other functions.}
+
+\item{force}{force reset client id and secret}
 }
 \description{
 Set Client ID and Secret. Needed for interfacing with Clarifai. Run this before anything else.
+}
+\details{
+The function looks for \code{ClarifaiId} and \code{ClarifaiSecret} in the environment. If it doesn't find them and if we don't want to force
+change in them, it looks for arguments. And if no arguments are passed, it asks for user to input the values.
 }
 \examples{
 \dontrun{
