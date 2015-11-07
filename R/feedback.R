@@ -17,10 +17,12 @@
 #' feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
 #' }
 
-feedback <- function(file_path = "path_to_image", feedback_type='add_tags', feedback_value="")
+feedback <- function(file_path = "", feedback_type='add_tags', feedback_value="")
 {
    
     clarifai_CHECKAUTH()
+
+    if(!file.exists(file_path)) stop("File Doesn't Exist. Please check the path.")
 
     h <- new_handle()
 	handle_setopt(h,  customrequest = "POST")

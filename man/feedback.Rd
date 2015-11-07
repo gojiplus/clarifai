@@ -4,8 +4,7 @@
 \alias{feedback}
 \title{Provide Feedback on Tags of an Image}
 \usage{
-feedback(file_path = "path_to_image", feedback_type = "add_tags",
-  feedback_value = "")
+feedback(file_path = "", feedback_type = "add_tags", feedback_value = "")
 }
 \arguments{
 \item{file_path}{image on which the feedback is being provided}
