@@ -17,12 +17,12 @@
 #' feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
 #' }
 
-feedback <- function(file_path = "", feedback_type='add_tags', feedback_value="")
-{
+feedback <- function(file_path = "", feedback_type='add_tags', feedback_value="") {
    
-    clarifai_CHECKAUTH()
+    clarifai_CHECKTOKEN()
 
     if(!file.exists(file_path)) stop("File Doesn't Exist. Please check the path.")
+    if(identical(feedback_value, "")) stop("Provide something other than an empty string as feedback.")
 
     h <- new_handle()
 	handle_setopt(h,  customrequest = "POST")
@@ -32,8 +32,8 @@ feedback <- function(file_path = "", feedback_type='add_tags', feedback_value=""
 						add_tags     = {handle_setform(h, encoded_image = form_file(file_path), add_tags          = feedback_value)},
 						remove_tags  = {handle_setform(h, encoded_image = form_file(file_path), remove_tags       = feedback_value)},
 						search_click = {handle_setform(h, encoded_image = form_file(file_path), search_click      = feedback_value)},
-						search_click = {handle_setform(h, encoded_image = form_file(file_path), similar_docids    = feedback_value)},
-						search_click = {handle_setform(h, encoded_image = form_file(file_path), dissimilar_docids = feedback_value)})
+						similar_docids = {handle_setform(h, encoded_image = form_file(file_path), similar_docids    = feedback_value)},
+						dissimilar_docids = {handle_setform(h, encoded_image = form_file(file_path), dissimilar_docids = feedback_value)})
 	
 
 	tag_con    <- curl_fetch_memory("https://api.clarifai.com/v1/feedback/", handle=h)

@@ -9,7 +9,7 @@
 
 tag_image<- function(file_path=NULL) {
 	
-    clarifai_CHECKAUTH()
+    clarifai_CHECKTOKEN()
         
     if(!file.exists(file_path)) stop("File Doesn't Exist. Please check the path.")
 

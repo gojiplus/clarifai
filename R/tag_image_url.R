@@ -7,9 +7,9 @@
 #' tag_image_url(img_url="url_of_image")
 #' }
 
-tag_image_url <- function(img_url=NULL)
-{
-    clarifai_CHECKAUTH()
+tag_image_url <- function(img_url=NULL) {
+    
+    clarifai_CHECKTOKEN()
     
 	# if(RCurl::url.exists(img_url))
     

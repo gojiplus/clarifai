@@ -15,4 +15,7 @@ If you haven't already, you can get this at \url{https://developer.clarifai.com/
 \author{
 Gaurav Sood
 }
+\seealso{
+\code{\link{get_token}}
+}
 

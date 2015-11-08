@@ -8,7 +8,9 @@
 #'
 #' Your need credentials to use this application. 
 #' If you haven't already, you can get this at \url{https://developer.clarifai.com/}.
-#' 
+#'
+#' @seealso \code{\link{get_token}}
+#'  
 #' @importFrom utils URLencode
 #' @import curl
 #' @importFrom jsonlite fromJSON 
@@ -16,15 +18,23 @@
 #' @author Gaurav Sood
 NULL
 
-#' Check if authentication information is there
+#' Check if authentication information is in the environment
 #' 
 
-clarifai_CHECKAUTH <- 
-function() {
+clarifai_CHECKAUTH <- function() {
 
 	app_id = Sys.getenv('ClarifaiId')
 	app_pass = Sys.getenv('ClarifaiSecret')
 
-    if(identical(app_id, "") | identical(app_pass, "")) stop("Please set application token using secret_id(c('app_id', 'app_pass')).")
+    if(identical(app_id, "") | identical(app_pass, "")) stop("Please set application token using secret_id(c('app_id', 'app_pass')).\n After that, set token using get_token()")
+}
+
+#' Check if authentication token is in the environment
+#'
+
+clarifai_CHECKTOKEN <- function() {
+
+	app_token = Sys.getenv('ClarifaiToken')
+    if(identical(app_token, "")) stop("Please get a token using get_token()")
 
 }

@@ -9,7 +9,7 @@
 
 get_info <- function()
 {
-	clarifai_CHECKAUTH()
+	clarifai_CHECKTOKEN()
 		
     h <- new_handle()
 	handle_setopt(h,  customrequest = "GET")

@@ -2,11 +2,11 @@
 % Please edit documentation in R/clarifai.R
 \name{clarifai_CHECKAUTH}
 \alias{clarifai_CHECKAUTH}
-\title{Check if authentication information is there}
+\title{Check if authentication information is in the environment}
 \usage{
 clarifai_CHECKAUTH()
 }
 \description{
-Check if authentication information is there
+Check if authentication information is in the environment
 }
 
