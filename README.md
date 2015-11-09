@@ -1,4 +1,4 @@
-### clarifai: R Client for the Clarifai API
+## clarifai: R Client for the Clarifai API
 
 [![Build Status](https://travis-ci.org/soodoku/clarifai.svg?branch=master)](https://travis-ci.org/soodoku/clarifai)
 [![Build status](https://ci.appveyor.com/api/projects/status/4aa0x74ggm51075o?svg=true)](https://ci.appveyor.com/project/soodoku/clarifai)
@@ -47,16 +47,18 @@ get_info()
 
 We are now all set. Let's play. Get tags of a remote image:
 
-![Metro North](https://raw.githubusercontent.com/soodoku/clarifai/master/inst/extdata/metro-north.jpg)
+![Metro North](http://www.clarifai.com/img/metro-north.jpg)
 
 ```r
-res <- tag_image_url("http://www.clarifai.com/img/metro-north.jpg")
+tag_image_url("http://www.clarifai.com/img/metro-north.jpg")
 
-res$results[,6][[1]][[1]][[2]][1:5]
-## "train"          "railroad"       "station"        "rail"           "transportation"
-
-res$results[,6][[1]][[2]][[1]][1:5]
-## 0.9993986 0.9980315 0.9970427 0.9950421 0.9950128
+##           labels     probs
+## 1          train 0.9993986
+## 2       railroad 0.9980315
+## 3        station 0.9970427
+## 4           rail 0.9950421
+## 5 transportation 0.9950128
+## 6       platform 0.9949192
 ```
 
 Get tags for a local image:

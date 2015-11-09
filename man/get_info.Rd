@@ -6,8 +6,16 @@
 \usage{
 get_info()
 }
+\value{
+Named list of length 3: \code{status_code}, \code{status_msg}, and \code{results}. 
+\code{results} is a named list of length 12. Contains information about max. and 
+min. image and video size allowed etc. 
+
+Prints \code{status_msg} by default
+}
 \description{
-Learn about the application -- what are maximum sizes allowed etc.
+Basic information about the application --- what are maximum sizes allowed, 
+default language, max. and min. image and video size, max. batch size, etc.
 }
 \examples{
 \dontrun{

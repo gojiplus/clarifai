@@ -2,15 +2,35 @@
 % Please edit documentation in R/tag_image.R
 \name{tag_image}
 \alias{tag_image}
-\title{Tag Local Images}
+\title{Tag Images on the Computer}
 \usage{
-tag_image(file_path = NULL)
+tag_image(file_path = NULL, meta = FALSE)
 }
 \arguments{
-\item{file_path}{path to image file}
+\item{file_path}{path to image file for which you want tags}
+
+\item{meta}{Boolean that toggles whether or not you want 
+the entire object. The entire object returned by the API contains
+a lot of meta data. By default a data.frame with labels and probabilities
+is returned.}
+}
+\value{
+If meta is TRUE, a named list of length 4 with following elements is returned: 
+\code{status_code} OK or not
+\code{status_msg}  Successful or not
+\code{meta} Named list of 1 containing another list named \code{tag}
+Sublist \code{tag} has three elements: timestamp, model and config
+\code{results} is a data.frame of length 6 and 1 row. Column names are:
+\code{docid}, \code{status_code}, \code{status_msg}, \code{local_id} and 
+a data.frame named tag which has a data.frame result which contains two columns: 
+labels and probabilities
+
+If meta is FALSE and if labels are returned successfully,
+a data.frame with two columns: labels and probs returned
+Initial few rows of the data.frame are printed by default
 }
 \description{
-Tag Local Images
+Tag Images on the Computer
 }
 \examples{
 \dontrun{

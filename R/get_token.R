@@ -11,7 +11,7 @@
 
 get_token <- function() {
 	
-    clarifai_check_token()
+    clarifai_check_auth()
 
     h <- new_handle()
 	handle_setopt(h, customrequest = "POST")
