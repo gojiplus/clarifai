@@ -3,13 +3,14 @@
 #' @param file_path path to image file
 #' @export
 #' @references \url{https://developer.clarifai.com/}
+#' @seealso \code{\link{tag_image_url}}
 #' @examples \dontrun{
 #' tag_image(file_path="path_to_image")
 #' }
 
 tag_image<- function(file_path=NULL) {
 	
-    clarifai_CHECKTOKEN()
+    clarifai_check_token()
         
     if(!file.exists(file_path)) stop("File Doesn't Exist. Please check the path.")
 

@@ -21,7 +21,7 @@ NULL
 #' Check if authentication information is in the environment
 #' 
 
-clarifai_CHECKAUTH <- function() {
+clarifai_check_auth <- function() {
 
 	app_id = Sys.getenv('ClarifaiId')
 	app_pass = Sys.getenv('ClarifaiSecret')
@@ -32,7 +32,7 @@ clarifai_CHECKAUTH <- function() {
 #' Check if authentication token is in the environment
 #'
 
-clarifai_CHECKTOKEN <- function() {
+clarifai_check_token <- function() {
 
 	app_token = Sys.getenv('ClarifaiToken')
     if(identical(app_token, "")) stop("Please get a token using get_token()")

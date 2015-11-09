@@ -1,15 +1,16 @@
 #' Tag Remote Images
 #'
-#' @param img_url path to the image
+#' @param img_url URL of the image
 #' @export
 #' @references \url{https://developer.clarifai.com/}
+#' @seealso \code{\link{tag_image}}
 #' @examples \dontrun{
 #' tag_image_url(img_url="url_of_image")
 #' }
 
 tag_image_url <- function(img_url=NULL) {
     
-    clarifai_CHECKTOKEN()
+    clarifai_check_token()
     
 	# if(RCurl::url.exists(img_url))
     

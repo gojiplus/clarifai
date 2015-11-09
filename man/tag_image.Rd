@@ -20,4 +20,7 @@ tag_image(file_path="path_to_image")
 \references{
 \url{https://developer.clarifai.com/}
 }
+\seealso{
+\code{\link{tag_image_url}}
+}
 

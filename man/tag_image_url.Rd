@@ -7,7 +7,7 @@
 tag_image_url(img_url = NULL)
 }
 \arguments{
-\item{img_url}{path to the image}
+\item{img_url}{URL of the image}
 }
 \description{
 Tag Remote Images
@@ -19,5 +19,8 @@ tag_image_url(img_url="url_of_image")
 }
 \references{
 \url{https://developer.clarifai.com/}
+}
+\seealso{
+\code{\link{tag_image}}
 }
 
