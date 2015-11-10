@@ -6,6 +6,6 @@ test_that("tag_image happens successfully", {
   skip_on_cran()
   secret_id(token)
   get_token()
-  tag <- tag_image_url("http://www.clarifai.com/img/metro-north.jpg")
+  tag <- tag_image_urls("http://www.clarifai.com/img/metro-north.jpg")
   expect_that(tag, is_a("data.frame"))
 })
