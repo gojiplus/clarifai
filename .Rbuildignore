@@ -2,6 +2,6 @@
 ^\.Rproj\.user$
 .travis.yml
 appveyor.yml
-^.*\.Rmd$
-^.*\.md$
 ^\.httr-oauth$
+^dev$
+^cran-comments.md$

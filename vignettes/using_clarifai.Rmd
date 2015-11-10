@@ -1,0 +1,72 @@
+---
+title: "Using clarifai"
+author: "Gaurav Sood"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using clarifai}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+### Installation
+
+To get the current development version from GitHub:
+
+```{r install, eval=F}
+# install.packages("devtools")
+devtools::install_github("soodoku/clarifai")
+```
+
+#### Load up the lib:
+```{r load_lib}
+library(clarifai)
+```
+
+#### Authentication
+
+Start by setting Client ID and secret, which you can get from [https://developer.clarifai.com/](https://developer.clarifai.com/)
+```{r, eval=FALSE}
+secret_id(c("client_id", "secret"))
+```
+
+Next, get the token (the function also sets it):
+```{r, eval=FALSE}
+get_token()
+```
+
+#### Get Information
+
+Get information about your application:
+```{r}
+get_info()
+```
+
+#### Get Tags
+
+We are now all set. Let's play. Get tags of a remote image:
+
+```{r}
+res <- tag_image_urls("http://www.clarifai.com/img/metro-north.jpg")
+```
+
+Get tags for a local image:
+```{r, eval=F}
+path <- system.file("inst/extdata/", package = "clarifai")
+filep <- paste0(path, "/metro-north.jpg")
+tag_images(filep)
+```
+
+Provide feedback about tags for an image, including suggesting new tags, suggesting that some tags be removed etc. 
+
+#### Provide Feedback
+
+```{r feedback, eval=FALSE}
+feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
+
+## $status_code
+## [1] "OK"
+
+## $status_msg
+## [1] "Feedback successfully recorded. "
+```
