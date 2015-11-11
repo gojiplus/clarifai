@@ -20,7 +20,7 @@ install.packages("devtools")
 devtools::install_github("soodoku/clarifai", build_vignettes = TRUE)
 ```
 
-To learn about how to use clarifai, see the vignette:
+To learn about how to use clarifai, [read the vignette](vignettes/using_clarifai.Rmd) or launch it within R:
 ```
 vignette("using_clarifai", package = "clarifai")
 ```
