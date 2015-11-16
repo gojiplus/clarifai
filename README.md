@@ -21,7 +21,7 @@ install.packages("devtools")
 devtools::install_github("soodoku/clarifai", build_vignettes = TRUE)
 ```
 
-To learn about how to use clarifai, see [using_clarifai.md](vignettes/using_clarifai.Rmd) or [analyzing instagram accounts of politicians](vignettes/poligrams.Rmd).
+To learn about how to use clarifai, see [using_clarifai](vignettes/using_clarifai.Rmd) or [analyzing instagram accounts of politicians](vignettes/poligrams.Rmd).
 
 You can also launch vignettes within R:
 
