@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title>Analyzing Politician Instagram Accounts Using clarifai</title>
+<title>Using clarifai</title>
 
 <script type="text/javascript">
 window.onload = function() {
@@ -201,129 +201,87 @@ hr {
 </head>
 
 <body>
-<h2>Analyzing Politician Instagram Accounts Using clarifai</h2>
+<h2>Using clarifai</h2>
 
-<pre><code class="r">library(instaR)
+<h3>Installation</h3>
+
+<p>To get the current development version from GitHub:</p>
+
+<pre><code class="r"># install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;soodoku/clarifai&quot;)
 </code></pre>
 
-<p>To use the instagram API, go to <a href="https://instagram.com/developer/">https://instagram.com/developer/</a> and click on manage client and then register a client. Choose a name etc. For website and redirect URL, write in <a href="http://localhost:1410/">http://localhost:1410/</a>. This will give you client ID and secret. Plug these in as follows</p>
-
-<pre><code class="r">my_oauth &lt;- instaOAuth(app_id=&quot;1f1f8228974248ba804b4c02fb3c082f&quot;, app_secret=&quot;a8a727a6b21e488988207686c88ec49e&quot;)
-save(my_oauth, file=&quot;my_oauth&quot;)
-</code></pre>
-
-<p>Now it is time to load clarifai:</p>
+<h4>Load up the lib:</h4>
 
 <pre><code class="r">library(clarifai)
 </code></pre>
 
-<p>Clarifai ships with instagram handles of politicians. Load the file using:</p>
+<h4>Authentication</h4>
 
-<pre><code class="r">filepath &lt;- system.file(&quot;inst/extdata/congress.csv&quot;, package = &quot;clarifai&quot;)
-pols &lt;- read.csv(filepath)
+<p>Start by setting Client ID and secret, which you can get from <a href="https://developer.clarifai.com/">https://developer.clarifai.com/</a></p>
+
+<pre><code class="r">secret_id(c(&quot;client_id&quot;, &quot;secret&quot;))
 </code></pre>
 
-<p>Next, download data from instagram: </p>
+<p>Next, get the token (the function also sets it):</p>
 
-<pre><code class="r"># getUserMedia(pols$instagram[1], token=my_oauth)
-
-res &lt;- list()
-for (i in 1:nrow(pols)) {
-    # Not all politicians have instagram accounts. 
-    if (pols$instagram[i]!=&quot;&quot;) {
-        # Not all have public posts
-        res[[i]] &lt;- tryCatch(getUserMedia(pols$instagram[i], token=my_oauth), error=function(err) NA)
-    } else { 
-        res[[i]] &lt;- NA 
-    }
-}
-# rbind
-res2 &lt;- do.call(rbind, res) # nrow = 8088 (may change for runs in the future)
+<pre><code class="r">get_token()
 </code></pre>
 
-<p>Merge it with some pols data</p>
+<h4>Get Information</h4>
 
-<pre><code class="r"># Get pols data ready
-small_pols &lt;- pols[,c(&quot;first_name&quot;, &quot;last_name&quot;, &quot;party&quot;, &quot;instagram&quot;, &quot;dw_nominate&quot;)]
-small_pols_2 &lt;- subset(small_pols, instagram!=&quot;&quot;) # take out no username/NA
+<p>Get information about your application:</p>
 
-# Merge 
-res2[, c(&quot;first_name&quot;, &quot;last_name&quot;, &quot;party&quot;, &quot;instagram&quot;, &quot;dw_nominate&quot;)] &lt;- 
-small_pols_2[match(res2$username, small_pols_2$instagram),]
-
-# write.csv(res2, file=&quot;res2.csv&quot;, row.names=F)
+<pre><code class="r">get_info()
 </code></pre>
 
-<p>Now, get image labels from clarifai: </p>
-
-<pre><code class="r">labs &lt;- list()
-# Not implemented optimally. 
-# You can push all images at once. And that is the best than 8k requests.
-for (i in 1:nrow(res2)) {
-    labs[[i]] &lt;- tryCatch(tag_image_urls(res2$image_url[i]), error=function(err) NA)    
-} 
-
-labs_df &lt;- do.call(rbind, labs)
+<pre><code>## Status message:  All images in request have completed successfully.
 </code></pre>
 
-<p>Next merge the labels back into the data: </p>
+<h4>Get Tags</h4>
 
-<pre><code class="r"># Merge 
-labs_df[,names(res2)] &lt;- res2[match(labs_df$img_url, res2$image_url),]
+<p>We are now all set. Let&#39;s play. Get tags of a remote image:</p>
 
-# write.csv(labs_df, file=&quot;labs_df.csv&quot;, row.names=F)
-# This data frame is available in the extdata folder
+<p><img src="http://www.clarifai.com/img/metro-north.jpg" alt="Metro North"/></p>
+
+<pre><code class="r">res &lt;- tag_image_urls(&quot;http://www.clarifai.com/img/metro-north.jpg&quot;)
+head(res)
 </code></pre>
 
-<p>Let us analyze data. Popular tags: </p>
-
-<pre><code class="r">head(table(labs_df$tags)[order(-table(labs_df$tags))], 40)
+<pre><code>##                                       img_url           tags
+## 1 http://www.clarifai.com/img/metro-north.jpg          train
+## 2 http://www.clarifai.com/img/metro-north.jpg       railroad
+## 3 http://www.clarifai.com/img/metro-north.jpg        station
+## 4 http://www.clarifai.com/img/metro-north.jpg           rail
+## 5 http://www.clarifai.com/img/metro-north.jpg transportation
+## 6 http://www.clarifai.com/img/metro-north.jpg       platform
+##               probs
+## 1 0.999398589134216
+## 2 0.998031497001648
+## 3 0.997042655944824
+## 4 0.995042085647583
+## 5 0.995012819766998
+## 6 0.994919180870056
 </code></pre>
 
-<pre><code class="r">## people    politics       adult         men       group  government    business       women    portrait      leader 
-##       1592        1137        1132         999         910         795         793         773         763         670 
-##   clothing  politician   education      speech    election     indoors     meeting        room competition        many 
-##        554         472         456         435         433         426         360         352         347         345 
+<p>Get tags for a local image:</p>
+
+<pre><code class="r">path &lt;- system.file(&quot;inst/extdata/&quot;, package = &quot;clarifai&quot;)
+filep &lt;- paste0(path, &quot;/metro-north.jpg&quot;)
+tag_images(filep)
 </code></pre>
 
-<p>Do Republican instagram accounts have more photos with military tags than Democrats? </p>
+<p>Provide feedback about tags for an image, including suggesting new tags, suggesting that some tags be removed etc. </p>
 
-<pre><code class="r">table(grepl(&quot;military&quot;, labs_df$tags), labs_df$party)
-</code></pre>
+<h4>Provide Feedback</h4>
 
-<pre><code class="r">##           D     R
-##  FALSE 19806 16030
-##  TRUE     94    90
-</code></pre>
+<pre><code class="r">feedback(file_path=&quot;path_to_image&quot;, feedback_type=&quot;add_tags&quot;, feedback_value=&quot;suggested_tag&quot;)
 
-<p>How about women?</p>
+## $status_code
+## [1] &quot;OK&quot;
 
-<pre><code class="r">table(grepl(&quot;women&quot;, labs_df$tags), labs_df$party)
-</code></pre>
-
-<pre><code class="r">##           D     R
-##  FALSE 19458 15853
-##  TRUE    442   267
-</code></pre>
-
-<pre><code class="r">table(grepl(&quot;men&quot;, labs_df$tags), labs_df$party)
-</code></pre>
-
-<p>See also for men: </p>
-
-<pre><code class="r">##            D     R
-##  FALSE 18265 14978
-##  TRUE   1635  1142
-</code></pre>
-
-<p>Protest?</p>
-
-<pre><code class="r">table(grepl(&quot;protest&quot;, labs_df$tags), labs_df$party)
-</code></pre>
-
-<pre><code class="r">##           D     R
-##  FALSE 19734 16024
-##  TRUE    166    96
+## $status_msg
+## [1] &quot;Feedback successfully recorded. &quot;
 </code></pre>
 
 </body>

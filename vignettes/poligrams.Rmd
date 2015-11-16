@@ -100,7 +100,7 @@ Let us analyze data. Popular tags:
 head(table(labs_df$tags)[order(-table(labs_df$tags))], 40)
 ```
 
-```{r out_pop}
+```{r out_pop, eval=F}
 ## people    politics       adult         men       group  government    business       women    portrait      leader 
 ##       1592        1137        1132         999         910         795         793         773         763         670 
 ##   clothing  politician   education      speech    election     indoors     meeting        room competition        many 
@@ -113,7 +113,7 @@ Do Republican instagram accounts have more photos with military tags than Democr
 table(grepl("military", labs_df$tags), labs_df$party)
 ```
 
-```{r out_mil}
+```{r out_mil, eval=F}
 ##           D     R
 ##  FALSE 19806 16030
 ##  TRUE     94    90
@@ -126,7 +126,7 @@ How about women?
 table(grepl("women", labs_df$tags), labs_df$party)
 ```
 
-```{r out_women}
+```{r out_women, eval=F}
 ##           D     R
 ##  FALSE 19458 15853
 ##  TRUE    442   267
