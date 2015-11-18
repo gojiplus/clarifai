@@ -1,0 +1,6 @@
+version .2 2015-XX-XX
+-----------------------
+1. New use case about classifying domain names using images, application to classifying porn
+2. Bug fix: cases where fewer than 20 tags are returned now handled nicely
+3. Cleaner vignette code for analyzing politicians' instagram accounts
+4. More unit tests added
