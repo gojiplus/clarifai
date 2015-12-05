@@ -1,4 +1,4 @@
-context("Tag Local Image")
+context("Tag Remote Image")
 
 token <- c(Sys.getenv('ClarifaiId'), Sys.getenv('ClarifaiSecret'))
 
