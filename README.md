@@ -4,6 +4,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/4aa0x74ggm51075o?svg=true)](https://ci.appveyor.com/project/soodoku/clarifai)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/clarifai)](http://cran.r-project.org/package=clarifai)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/clarifai)
+[![codecov.io](https://codecov.io/github/soodoku/clarifai/coverage.svg?branch=master)](https://codecov.io/github/soodoku/clarifai?branch=master)
 
 Find out what is in a (moving) image with perhaps the best off-the-shelf solution: [clarifai.com](http://clarifai.com). Clarifai provides descriptors for images along with how confident it is about each of the descriptors. It is a bit magical. (See also the 2013 [ImageNet LSVR Classification Results](http://www.image-net.org/challenges/LSVRC/2013/results.php).)
 

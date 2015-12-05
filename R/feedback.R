@@ -12,6 +12,7 @@
 #' @param feedback_value what tags to add, remove etc.
 #' 
 #' @export
+#' @usage feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
 #' @references \url{https://developer.clarifai.com/}
 #' @examples \dontrun{
 #' feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
