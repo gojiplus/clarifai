@@ -1,8 +1,8 @@
-context("Tag Remote Image")
+context("Tag Remote Images")
 
 token <- c(Sys.getenv('ClarifaiId'), Sys.getenv('ClarifaiSecret'))
 
-test_that("tag_image happens successfully", {
+test_that("tag_image_urls works ok", {
   skip_on_cran()
   secret_id(token)
   get_token()
