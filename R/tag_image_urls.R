@@ -56,7 +56,8 @@ tag_image_urls <- function(img_urls=NULL, meta=FALSE, simplify=TRUE) {
 		   tags <- lapply(tag$results$result$tag[,1], unlist)
 		   probs <- lapply(tag$results$result$tag[,2], unlist)
 		   tags_probs <- do.call(rbind, Map(cbind, tags, probs))
-		   tags_probs_imgs <- data.frame(img_urls=rep(img_urls, each=20), tags_probs)
+		   len <- sapply(probs, length)
+		   tags_probs_imgs <- data.frame(img_urls=rep(img_urls, len), tags_probs)
 		   names(tags_probs_imgs) <- c("img_url", "tags", "probs")
 		   return(invisible(tags_probs_imgs))
 		}

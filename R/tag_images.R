@@ -31,7 +31,7 @@ tag_images <- function(file_paths=NULL, meta=FALSE, simplify=TRUE) {
 	
     clarifai_check_token()
         
-    if(! all(file.exists(file_paths))) stop("File Doesn't Exist. Please check the path.")
+    if (! all(file.exists(file_paths))) stop("File Doesn't Exist. Please check the path.")
 
     paths <- lapply(file_paths, form_file)
     names(paths) <- rep("encoded_image", length(paths))
@@ -54,7 +54,8 @@ tag_images <- function(file_paths=NULL, meta=FALSE, simplify=TRUE) {
 		   probs <- lapply(tag$results$result$tag[,2], unlist)
 		   tags_probs <- do.call(rbind, Map(cbind, tags, probs))
 		   names(tags_probs) <- c("tags", "probs")
-		   tags_probs_imgs <- data.frame(file_paths=rep(file_paths, each=20), tags_probs)
+		   len <- sapply(probs, length)
+		   tags_probs_imgs <- data.frame(file_paths=rep(file_paths, len), tags_probs)
 		   return(invisible(tags_probs_imgs))
 		}
 
