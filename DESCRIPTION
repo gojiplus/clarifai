@@ -19,5 +19,6 @@ Imports:
     jsonlite
 Suggests:
     knitr,
+    rmarkdown,
     testthat
 RoxygenNote: 5.0.1
