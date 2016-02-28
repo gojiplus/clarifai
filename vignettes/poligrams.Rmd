@@ -5,7 +5,7 @@ date: "2015-11-10"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Analyzing Politician Instagram Accounts Using clarifai}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
