@@ -1,5 +1,0 @@
-version .2 2015-12-09
------------------------
-1. Bug fix: cases where fewer than 20 tags are returned now handled nicely
-2. More unit tests added
-3. New vignette

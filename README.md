@@ -21,7 +21,7 @@ install.packages("devtools")
 devtools::install_github("soodoku/clarifai", build_vignettes = TRUE)
 ```
 
-To learn about how to use clarifai, see [using_clarifai](vignettes/using_clarifai.Rmd) ([html version](http://htmlpreview.github.io/?https://github.com/soodoku/clarifai/blob/master/vignettes/using_clarifai.html)) or [analyzing instagram accounts of politicians](vignettes/poligrams.Rmd) ([html version](http://htmlpreview.github.io/?https://github.com/soodoku/clarifai/blob/master/vignettes/poligrams.html)) .
+To learn about how to use clarifai, see [using_clarifai](vignettes/using_clarifai.Rmd) ([html version](http://htmlpreview.github.io/?https://github.com/soodoku/clarifai/blob/master/vignettes/using_clarifai.html)) or [analyzing instagram accounts of politicians](vignettes/poligrams.Rmd) ([html version](http://htmlpreview.github.io/?https://github.com/soodoku/clarifai/blob/master/vignettes/poligrams.html)). There are lots of other interesting ways you can use clarifai. For instance, you can use clarifai for [inferring gender of the speaker based on the first name](https://github.com/soodoku/clarifai_gender).
 
 You can also launch vignettes within R:
 
