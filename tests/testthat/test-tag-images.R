@@ -7,7 +7,7 @@ test_that("tag_images works ok", {
   
   secret_id_file <- file("clarifai_secret_id", "r")
   secret_id_dat  <- suppressWarnings(readLines(secret_id_file))
-  secret_id(secret_id)
+  secret_id(unlist(strsplit(secret_id_dat, ",")))
   close(secret_id_file)
 
   get_token()
