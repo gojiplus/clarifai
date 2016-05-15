@@ -11,6 +11,10 @@ cache: packages
 r_github_packages:
   - jimhester/covr
 
+before_install:
+- openssl aes-256-cbc -K $encrypted_1fc90f464345_key -iv $encrypted_1fc90f464345_iv
+  -in tests/testthat/clarifai_secret_id.enc -out tests/testthat/clarifai_secret_id -d
+
 after_success:
   - Rscript -e 'covr::codecov()'
 

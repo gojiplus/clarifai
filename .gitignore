@@ -3,4 +3,4 @@
 .RData
 .httr-oauth
 dev/
-tests/testthat/clarifai_key
+tests/testthat/clarifai_secret_id

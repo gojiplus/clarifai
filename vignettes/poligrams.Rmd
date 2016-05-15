@@ -2,7 +2,6 @@
 title: "Analyzing Politician Instagram Accounts Using clarifai"
 author: "Gaurav Sood"
 date: "2015-11-10"
-output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Analyzing Politician Instagram Accounts Using clarifai}
   %\VignetteEngine{knitr::rmarkdown}
