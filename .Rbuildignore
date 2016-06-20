@@ -5,5 +5,5 @@ appveyor.yml
 ^\.httr-oauth$
 ^dev$
 ^cran-comments.md$
-^.codecov.yml$
+^codecov.yml$
 ^tests\testthat\clarifai_secret_id.enc$
