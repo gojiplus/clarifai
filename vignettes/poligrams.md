@@ -4,7 +4,7 @@ author: "Gaurav Sood"
 date: "2015-11-10"
 vignette: >
   %\VignetteIndexEntry{Analyzing Politician Instagram Accounts Using clarifai}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{knitr::knitr}
   %\VignetteEncoding{UTF-8}
 ---
 
@@ -15,7 +15,7 @@ vignette: >
 library(instaR)
 ```
 
-To use the instagram API, go to [https://instagram.com/developer/](https://instagram.com/developer/) and click on manage client and then register a client. Choose a name etc. For website and redirect URL, write in http:<!-- breaklink -->//localhost:1410. This will give you client ID and secret. Plug these in as follows:
+To use the instagram API, go to [https://instagram.com/developer/](https://instagram.com/developer/) and click on manage client and then register a client. Choose a name etc. For website and redirect URL, write in localhost:1410. This will give you client ID and secret. Plug these in as follows:
 
 
 ```r
