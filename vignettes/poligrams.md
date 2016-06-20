@@ -4,7 +4,7 @@ author: "Gaurav Sood"
 date: "2015-11-10"
 vignette: >
   %\VignetteIndexEntry{Analyzing Politician Instagram Accounts Using clarifai}
-  %\VignetteEngine{knitr::knitr}
+  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
