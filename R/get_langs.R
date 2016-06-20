@@ -6,10 +6,10 @@
 #' @export
 #' @references \url{https://developer.clarifai.com/}
 #' @examples \dontrun{
-#' list_langs()
+#' get_langs()
 #' }
 
-list_langs <- function() {
+get_langs <- function() {
 
 	clarifai_check_token()
 		

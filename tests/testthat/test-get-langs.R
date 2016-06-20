@@ -1,8 +1,6 @@
-context("Tag Local Image")
+context("Get List of Languages")
 
-samp_image <- system.file("extdata/metro-north.jpg", package = "clarifai")
-
-test_that("tag_images works ok", {
+test_that("get_langs happens successfully", {
   skip_on_cran()
   
   secret_id_file <- file("clarifai_secret_id", "r")
@@ -11,6 +9,6 @@ test_that("tag_images works ok", {
   close(secret_id_file)
 
   get_token()
-  tag <- tag_images(samp_image, meta=TRUE)
-  expect_that(tag, is_a("list"))
+  get_langs <- get_langs()
+  expect_that(get_langs, is_a("character"))
 })

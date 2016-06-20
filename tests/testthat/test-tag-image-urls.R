@@ -9,6 +9,6 @@ test_that("tag_image_urls works ok", {
   close(secret_id_file)
 
   get_token()
-  tag <- tag_image_urls("http://www.clarifai.com/img/metro-north.jpg")
-  expect_that(tag, is_a("data.frame"))
+  tag <- tag_image_urls("http://www.clarifai.com/img/metro-north.jpg", meta=TRUE)
+  expect_that(tag, is_a("list"))
 })

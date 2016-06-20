@@ -45,9 +45,9 @@ tag_images <- function(file_paths=NULL, meta=FALSE, simplify=TRUE) {
 	tag        <- fromJSON(rawToChar(tag_con$content))
 	
 	
-	if (!meta) {
+	if (identical(meta, FALSE)) {
 		
-		if (simplify) {
+		if (identical(simplify, TRUE)) {
         
           # Assumes 20 out
 		   tags <- lapply(tag$results$result$tag[,1], unlist)
