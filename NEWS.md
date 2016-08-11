@@ -1,3 +1,7 @@
+# clarifai 0.3.1
+
+* Clarifai removed link to metro north. Fixed that by changing to GitHub.
+
 # clarifai 0.3.0
 
 * Support for color, languages, usage 
