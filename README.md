@@ -6,7 +6,7 @@
 ![](http://cranlogs.r-pkg.org/badges/grand-total/clarifai)
 [![codecov](https://codecov.io/gh/soodoku/clarifai/branch/master/graph/badge.svg)](https://codecov.io/gh/soodoku/clarifai)
 
-Find out what is in a (moving) image with perhaps the best off-the-shelf solution: [clarifai.com](http://clarifai.com). Clarifai provides descriptors for images along with how confident it is about each of the descriptors. It is a bit magical. (See also the 2013 [ImageNet LSVR Classification Results](http://www.image-net.org/challenges/LSVRC/2013/results.php).)
+Find out what is in a (moving) image with perhaps the best off-the-shelf solution: [clarifai.com](http://clarifai.com). Clarifai provides descriptors for images along with how confident it is about each of the descriptors. It is a bit magical. (See also the 2013 [ImageNet LSVR Classification Results](https://github.com/soodoku/clarifai/blob/master/inst/extdata/lsvrc_results.pdf).)
 
 ### Installation
 
