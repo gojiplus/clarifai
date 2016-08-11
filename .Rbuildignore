@@ -9,3 +9,4 @@ appveyor.yml
 ^tests\testthat\clarifai_secret_id.enc$
 ^.gitignore$
 ^.gitattributes$
+^inst/extdata/lsvrc_results.pdf$
