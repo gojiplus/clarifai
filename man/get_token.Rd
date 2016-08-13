@@ -4,7 +4,10 @@
 \alias{get_token}
 \title{Get Access Token}
 \usage{
-get_token()
+get_token(...)
+}
+\arguments{
+\item{\dots}{Additional arguments passed to \code{\link{clarifai_POST}}.}
 }
 \value{
 a list with 4 things: access_token, token_type, expires_in, scope

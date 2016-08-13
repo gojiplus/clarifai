@@ -3,6 +3,9 @@
 #' Basic information about the application --- what are maximum sizes allowed, 
 #' default language, max. and min. image and video size, max. batch size, etc.
 #' 
+#' @param \dots Additional arguments passed to \code{\link{clarifai_GET}}.
+#' 
+#' 
 #' @return Named list of length 3: \code{status_code}, \code{status_msg}, and \code{results}. 
 #' \code{results} is a named list of length 12. Contains information about max. and 
 #' min. image and video size allowed etc. 
@@ -15,15 +18,11 @@
 #' get_info()
 #' }
 
-get_info <- function() {
+get_info <- function(...) {
 
 	clarifai_check_token()
-		
-    h <- new_handle()
-	handle_setopt(h,  customrequest = "GET")
-	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
-	info_con   <- curl_fetch_memory("https://api.clarifai.com/v1/info/", handle=h)
-	info       <- fromJSON(rawToChar(info_con$content))
+	
+	info <- clarifai_GET(path="info/", query=NULL, ...)
 
 	# Print some important things
 	cat("Status message: ", info$status_msg, "\n")

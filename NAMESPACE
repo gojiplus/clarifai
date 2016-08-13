@@ -2,6 +2,7 @@
 
 export(feedback)
 export(get_color)
+export(get_color_urls)
 export(get_info)
 export(get_langs)
 export(get_token)

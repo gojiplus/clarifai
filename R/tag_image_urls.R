@@ -4,6 +4,7 @@
 #' @param meta Boolean that toggles whether or not you want the entire object. 
 #' @param simplify Boolean that toggles whether or not you want a simplified data frame with
 #' each label and associated probability in a separate row. Default is TRUE.
+#' @param \dots Additional arguments passed to \code{\link{clarifai_POST}}.
 #' 
 #' The entire object returned by the API contains a lot of meta data. 
 #' By default a simplified data.frame with img_url, associated labels, and probabilities is returned. 
@@ -12,16 +13,16 @@
 #' \code{status_code} OK or not
 #' \code{status_msg}  Successful or not
 #' \code{meta} Named list of 1 containing another list named \code{tag}
-#' Sublist \code{tag} has three elements: timestamp, model and config
+#' Sublist \code{tag} has three elements: \code{timestamp}, \code{model} and \code{config}
 #' \code{results} is a data.frame of length 6 and 1 row. Column names are:
 #' \code{docid}, \code{status_code}, \code{status_msg}, \code{local_id} and 
 #' a data.frame named tag which has a data.frame result which contains two columns: 
 #' labels and probabilities
 #' 
-#' If meta is FALSE and simplify is TRUE,
-#' a data.frame with three columns: img_urls, labels and probs returned
+#' If \code{meta} is FALSE and \code{simplify} is TRUE,
+#' a data.frame with three columns: \code{img_urls}, \code{labels} and \code{probs} returned
 #'
-#' If meta is FALSE and simplify is FALSE,
+#' If \code{meta} is FALSE and \code{simplify} is FALSE,
 #' a data.frame with two columns carrying a vector of labels, vector of probs is returned
 #' for each image
 #' 
@@ -29,24 +30,25 @@
 #' @references \url{https://developer.clarifai.com/}
 #' @seealso \code{\link{tag_images}}
 #' @examples \dontrun{
-#' tag_image_urls(img_url="url_of_image")
+#' tag_image_urls(img_urls="url_of_image")
+#' tag_image_urls("https://samples.clarifai.com/metro-north.jpg")
 #' }
 
-tag_image_urls <- function(img_urls=NULL, meta=FALSE, simplify=TRUE) {
+tag_image_urls <- function(img_urls=NULL, meta=FALSE, simplify=TRUE, ...) {
     
+    if (is.null(img_urls)) stop("Please specify a valid image url.")
+
     clarifai_check_token()
     
-    urls <- as.list(img_urls)
-    names(urls) <- rep("url", length(urls))
+    query <- as.list(img_urls)
+    names(query) <- rep("url", length(query))
 
-    h <- new_handle()
-	handle_setopt(h,  customrequest = "POST")
-	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
-	handle_setform(h, .list = urls)
-	tag_con    <- curl_fetch_memory("https://api.clarifai.com/v1/tag/", handle=h)
-	tag        <- fromJSON(rawToChar(tag_con$content))
+	tag <- clarifai_POST(path="tag/", query, ...)
 
-	status_msg <- tag$results$status_msg=="OK"
+	if (tag$status_code!="OK") {
+		print(tag$status)
+		return(invisible(list()))
+	}
 
 	if (!meta) {
 		

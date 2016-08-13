@@ -4,7 +4,7 @@
 \alias{tag_images}
 \title{Tag Images on the Computer}
 \usage{
-tag_images(file_paths = NULL, meta = FALSE, simplify = TRUE)
+tag_images(file_paths = NULL, meta = FALSE, simplify = TRUE, ...)
 }
 \arguments{
 \item{file_paths}{a vactor of paths to image file(s) for which you want tags}
@@ -12,7 +12,9 @@ tag_images(file_paths = NULL, meta = FALSE, simplify = TRUE)
 \item{meta}{Boolean that toggles whether or not you want the entire object.}
 
 \item{simplify}{Boolean that toggles whether or not you want a simplified data frame with
-each label and associated probability in a separate row. Default is TRUE.
+each label and associated probability in a separate row. Default is TRUE.}
+
+\item{...}{Additional arguments passed to \code{\link{clarifai_POST}}.
 
 The entire object returned by the API contains a lot of meta data. 
 By default a simplified data.frame with img_url, associated labels, and probabilities is returned.}

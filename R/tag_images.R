@@ -27,7 +27,7 @@
 #' tag_images(file_paths="path_to_image")
 #' }
 
-tag_images <- function(file_paths=NULL, meta=FALSE, simplify=TRUE) {
+tag_images <- function(file_paths=NULL, meta=FALSE, simplify=TRUE, ...) {
 	
     clarifai_check_token()
         
@@ -36,13 +36,7 @@ tag_images <- function(file_paths=NULL, meta=FALSE, simplify=TRUE) {
     paths <- lapply(file_paths, form_file)
     names(paths) <- rep("encoded_image", length(paths))
 
-    h <- new_handle()
-	handle_setopt(h,  customrequest = "POST")
-	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
-	handle_setform(h, .list=paths)
-
-	tag_con    <- curl_fetch_memory("https://api.clarifai.com/v1/tag/", handle=h)
-	tag        <- fromJSON(rawToChar(tag_con$content))
+    tag <- clarifai_POST(path="tag/", paths)
 	
 	
 	if (identical(meta, FALSE)) {

@@ -4,7 +4,10 @@
 \alias{get_info}
 \title{Get Information}
 \usage{
-get_info()
+get_info(...)
+}
+\arguments{
+\item{\dots}{Additional arguments passed to \code{\link{clarifai_GET}}.}
 }
 \value{
 Named list of length 3: \code{status_code}, \code{status_msg}, and \code{results}. 

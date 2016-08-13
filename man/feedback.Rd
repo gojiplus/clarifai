@@ -4,19 +4,22 @@
 \alias{feedback}
 \title{Provide Feedback on Tags of an Image}
 \usage{
-feedback(file_path = "", feedback_type = "add_tags", feedback_value = "")
+feedback(file_path = "", feedback_type = "add_tags", feedback_value = "",
+  ...)
 }
 \arguments{
 \item{file_path}{image on which the feedback is being provided}
 
 \item{feedback_type}{must be one of the following types:
-add_tags vector of suggested tags; default
-remove_tags vector of tags you suggest be removed
-search_click which tag(s) where clicked on
-similar_docids similar documents 
-dissimilar_docids dissimilar documents}
+\code{add_tags} vector of suggested tags; default
+\code{remove_tags} vector of tags you suggest be removed
+\code{search_click} which tag(s) where clicked on
+\code{similar_docids} similar documents 
+\code{dissimilar_docids} dissimilar documents}
 
 \item{feedback_value}{what tags to add, remove etc.}
+
+\item{\dots}{Additional arguments passed to \code{\link{clarifai_POST}}.}
 }
 \description{
 Suggest tags, suggest removal of tags, suggest (dis)similar documents, or let clarifai know which tag was clicked on
@@ -25,8 +28,9 @@ Suggest tags, suggest removal of tags, suggest (dis)similar documents, or let cl
 \dontrun{
 feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
 }
+
 }
 \references{
-\url{https://developer.clarifai.com/}
+\url{https://developer.clarifai.com/guide/}
 }
 

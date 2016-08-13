@@ -1,7 +1,8 @@
 #' Get API usage for the current month and hour
 #'
-#'
-#' @return named list 
+#' @param \dots Additional arguments passed to \code{\link{clarifai_GET}}.
+#' 
+#' @return named list with four items \code{status_code}, \code{status_msg}, \code{results} (user and application details --- credits consumed, total credit)
 #' 
 #' @export
 #' @references \url{https://developer.clarifai.com/}
@@ -9,15 +10,11 @@
 #' get_usage()
 #' }
 
-get_usage <- function() {
+get_usage <- function(...) {
 
 	clarifai_check_token()
 		
-    h <- new_handle()
-	handle_setopt(h,  customrequest = "GET")
-	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
-	usage_con   <- curl_fetch_memory("https://api.clarifai.com/v1/usage/", handle=h)
-	usage       <- fromJSON(rawToChar(usage_con$content))
+    usage <- clarifai_GET(path="usage/", query=NULL, ...)
 
 	return(invisible(usage))
 

@@ -4,7 +4,10 @@
 \alias{get_langs}
 \title{List all the languages that the tag API call supports}
 \usage{
-get_langs()
+get_langs(...)
+}
+\arguments{
+\item{\dots}{Additional arguments passed to \code{\link{clarifai_GET}}.}
 }
 \value{
 character vector listing all the languages that tag API call supports. See \code{\link{tag_images}} and code{\link{tag_image_urls}}

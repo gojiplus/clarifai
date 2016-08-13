@@ -4,10 +4,13 @@
 \alias{get_usage}
 \title{Get API usage for the current month and hour}
 \usage{
-get_usage()
+get_usage(...)
+}
+\arguments{
+\item{\dots}{Additional arguments passed to \code{\link{clarifai_GET}}.}
 }
 \value{
-named list
+named list with four items \code{status_code}, \code{status_msg}, \code{results} (user and application details --- credits consumed, total credit)
 }
 \description{
 Get API usage for the current month and hour
