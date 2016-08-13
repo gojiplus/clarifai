@@ -28,7 +28,7 @@
 #' }
 
 
-tag_images <- function(file_paths=NULL, model=NULL, meta=FALSE, simplify=TRUE, ...) {
+tag_images <- function(file_paths=NULL, model=NULL, language = NULL, meta=FALSE, simplify=TRUE, ...) {
 	
     clarifai_check_token()
         
@@ -37,6 +37,7 @@ tag_images <- function(file_paths=NULL, model=NULL, meta=FALSE, simplify=TRUE, .
     query <- lapply(file_paths, form_file)
 	names(query) <- rep("encoded_image", length(query))
 	query$model <- model
+	query$language <- language
 
 	if (is.null(model)) {    
 		tag <- clarifai_POST(path="tag/", query, ...)

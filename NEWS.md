@@ -1,8 +1,10 @@
 # clarifai 0.4
 
-* Rationalized internals. GET and POST abstracted out.
+* Rationalized internals. GET and POST abstracted out, except for feedback
 * Better documentation.
 * Supports color for remote images, models
+* Return for image tags was changed by clarifai, adjusted code to handle that
+* Supports languages
 
 # clarifai 0.3.1
 

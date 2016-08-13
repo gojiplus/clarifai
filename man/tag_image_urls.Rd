@@ -4,8 +4,8 @@
 \alias{tag_image_urls}
 \title{Tag Remote Images}
 \usage{
-tag_image_urls(img_urls = NULL, model = NULL, meta = FALSE,
-  simplify = TRUE, ...)
+tag_image_urls(img_urls = NULL, model = NULL, language = NULL,
+  meta = FALSE, simplify = TRUE, ...)
 }
 \arguments{
 \item{img_urls}{A string or character vector of URLs of images for which you want tags}
@@ -13,6 +13,9 @@ tag_image_urls(img_urls = NULL, model = NULL, meta = FALSE,
 \item{model}{For topic specific answers. Optional. 
 Can be one of the following: general-v1.3, nsfw-v1.0, weddings-v1.0, travel-v1.0, food-items-v0.1
 Default is NULL}
+
+\item{language}{Return tag in another language than english. 2 digit code. Optional. 
+See \code{list{get_langs}} for the supported languages and their 2 digit codes.}
 
 \item{meta}{Boolean that toggles whether or not you want the entire object.}
 
@@ -49,6 +52,7 @@ Tag Remote Images
 \dontrun{
 tag_image_urls(img_urls="url_of_image")
 tag_image_urls("https://samples.clarifai.com/metro-north.jpg")
+tag_image_urls("https://samples.clarifai.com/metro-north.jpg", language="es")
 tag_image_urls("https://samples.clarifai.com/nsfw.jpg", model="nsfw-v1.0")
 }
 }
