@@ -4,6 +4,9 @@
 #' @param meta Boolean that toggles whether or not you want the entire object. 
 #' @param simplify Boolean that toggles whether or not you want a simplified data frame with
 #' each label and associated probability in a separate row. Default is TRUE.
+#' @param model For topic specific answers. Optional. 
+#' Can be one of the following: general-v1.3, nsfw-v1.0, weddings-v1.0, travel-v1.0, food-items-v0.1
+#' Default is NULL
 #' @param \dots Additional arguments passed to \code{\link{clarifai_POST}}.
 #' 
 #' The entire object returned by the API contains a lot of meta data. 
@@ -32,9 +35,10 @@
 #' @examples \dontrun{
 #' tag_image_urls(img_urls="url_of_image")
 #' tag_image_urls("https://samples.clarifai.com/metro-north.jpg")
+#' tag_image_urls("https://samples.clarifai.com/nsfw.jpg", model="nsfw-v1.0")
 #' }
 
-tag_image_urls <- function(img_urls=NULL, meta=FALSE, simplify=TRUE, ...) {
+tag_image_urls <- function(img_urls=NULL, model=NULL, meta=FALSE, simplify=TRUE, ...) {
     
     if (is.null(img_urls)) stop("Please specify a valid image url.")
 
@@ -42,9 +46,10 @@ tag_image_urls <- function(img_urls=NULL, meta=FALSE, simplify=TRUE, ...) {
     
     query <- as.list(img_urls)
     names(query) <- rep("url", length(query))
+    query$model <- model 
 
 	tag <- clarifai_POST(path="tag/", query, ...)
-
+	
 	if (tag$status_code!="OK") {
 		print(tag$status)
 		return(invisible(list()))
@@ -54,13 +59,13 @@ tag_image_urls <- function(img_urls=NULL, meta=FALSE, simplify=TRUE, ...) {
 		
 		if (simplify) {
         
-          # Assumes 20 out
-		   tags <- lapply(tag$results$result$tag[,1], unlist)
-		   probs <- lapply(tag$results$result$tag[,2], unlist)
-		   tags_probs <- do.call(rbind, Map(cbind, tags, probs))
+		   tags  <- lapply(tag$results$result$tag$classes, unlist)
+		   concept_ids <- lapply(tag$results$result$tag$concept_ids, unlist)
+		   probs <- lapply(tag$results$result$tag$probs, unlist)
+		   tags_probs <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
 		   len <- sapply(probs, length)
 		   tags_probs_imgs <- data.frame(img_urls=rep(img_urls, len), tags_probs)
-		   names(tags_probs_imgs) <- c("img_url", "tags", "probs")
+		   names(tags_probs_imgs) <- c("img_url", "tags", "probs", "concept_ids")
 		   return(invisible(tags_probs_imgs))
 		}
 

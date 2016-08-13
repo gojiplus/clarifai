@@ -27,29 +27,35 @@
 #' tag_images(file_paths="path_to_image")
 #' }
 
-tag_images <- function(file_paths=NULL, meta=FALSE, simplify=TRUE, ...) {
+
+tag_images <- function(file_paths=NULL, model=NULL, meta=FALSE, simplify=TRUE, ...) {
 	
     clarifai_check_token()
         
     if (! all(file.exists(file_paths))) stop("File Doesn't Exist. Please check the path.")
 
-    paths <- lapply(file_paths, form_file)
-    names(paths) <- rep("encoded_image", length(paths))
+    query <- lapply(file_paths, form_file)
+	names(query) <- rep("encoded_image", length(query))
+	query$model <- model
 
-    tag <- clarifai_POST(path="tag/", paths)
-	
-	
+	if (is.null(model)) {    
+		tag <- clarifai_POST(path="tag/", query, ...)
+	} else {
+		query$model <- model
+		tag <- clarifai_POST(path="tag/", query, ...)
+	}
+
 	if (identical(meta, FALSE)) {
 		
 		if (identical(simplify, TRUE)) {
         
-          # Assumes 20 out
-		   tags <- lapply(tag$results$result$tag[,1], unlist)
-		   probs <- lapply(tag$results$result$tag[,2], unlist)
-		   tags_probs <- do.call(rbind, Map(cbind, tags, probs))
-		   names(tags_probs) <- c("tags", "probs")
+		   tags  <- lapply(tag$results$result$tag$classes, unlist)
+		   concept_ids <- lapply(tag$results$result$tag$concept_ids, unlist)
+		   probs <- lapply(tag$results$result$tag$probs, unlist)
+		   tags_probs <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
 		   len <- sapply(probs, length)
 		   tags_probs_imgs <- data.frame(file_paths=rep(file_paths, len), tags_probs)
+		   names(tags_probs_imgs) <- c("file_paths", "tags", "probs", "concept_ids")
 		   return(invisible(tags_probs_imgs))
 		}
 

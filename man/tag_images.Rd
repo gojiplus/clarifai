@@ -4,10 +4,15 @@
 \alias{tag_images}
 \title{Tag Images on the Computer}
 \usage{
-tag_images(file_paths = NULL, meta = FALSE, simplify = TRUE, ...)
+tag_images(file_paths = NULL, model = NULL, meta = FALSE,
+  simplify = TRUE, ...)
 }
 \arguments{
 \item{file_paths}{a vactor of paths to image file(s) for which you want tags}
+
+\item{model}{For topic specific answers. Optional. 
+Can be one of the following: general-v1.3, nsfw-v1.0, weddings-v1.0, travel-v1.0, food-items-v0.1
+Default is NULL}
 
 \item{meta}{Boolean that toggles whether or not you want the entire object.}
 
