@@ -26,8 +26,8 @@ feedback <- function(file_path = "", feedback_type='add_tags', feedback_value=""
    
     clarifai_check_token()
 
-    if(!file.exists(file_path)) stop("File Doesn't Exist. Please check the path.")
-    if(identical(feedback_value, "")) stop("Provide something other than an empty string as feedback.")
+    if(!file.exists(file_path)) stop("File doesn't exist. Please check file_path again.", call. = FALSE)
+    if(identical(feedback_value, "")) stop("Please provide something other than an empty string as feedback.", call. = FALSE)
 
     h <- new_handle()
 	handle_setopt(h,  customrequest = "POST")

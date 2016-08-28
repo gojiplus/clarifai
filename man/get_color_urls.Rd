@@ -27,6 +27,7 @@ Get the dominant colors present in images or videos
 \examples{
 \dontrun{
 get_color_urls("https://samples.clarifai.com/metro-north.jpg")
+get_color_urls(c("https://samples.clarifai.com/metro-north.jpg", "https://samples.clarifai.com/metro-north.jpg"))
 }
 }
 \references{

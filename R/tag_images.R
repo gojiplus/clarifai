@@ -32,7 +32,7 @@ tag_images <- function(file_paths=NULL, model=NULL, language = NULL, meta=FALSE,
 	
     clarifai_check_token()
         
-    if (! all(file.exists(file_paths))) stop("File Doesn't Exist. Please check the path.")
+    if (! all(file.exists(file_paths))) stop("File Doesn't Exist. Please check the path.", call. = FALSE)
 
     query <- lapply(file_paths, form_file)
 	names(query) <- rep("encoded_image", length(query))

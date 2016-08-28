@@ -43,7 +43,7 @@
 
 tag_image_urls <- function(img_urls=NULL, model=NULL, language = NULL, meta=FALSE, simplify=TRUE, ...) {
     
-    if (is.null(img_urls)) stop("Please specify a valid image url.")
+    if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
 
     clarifai_check_token()
     
