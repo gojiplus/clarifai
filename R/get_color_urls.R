@@ -18,7 +18,8 @@
 #' 
 #' @examples \dontrun{
 #' get_color_urls("https://samples.clarifai.com/metro-north.jpg")
-#' get_color_urls(c("https://samples.clarifai.com/metro-north.jpg", "https://samples.clarifai.com/metro-north.jpg"))
+#' get_color_urls(c("https://samples.clarifai.com/metro-north.jpg", 
+#' 					"https://samples.clarifai.com/metro-north.jpg"))
 #' }
 
 get_color_urls <- function(img_urls=NULL, meta=FALSE, ...) {
