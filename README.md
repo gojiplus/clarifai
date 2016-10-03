@@ -33,7 +33,9 @@ vignette("using_clarifai", package = "clarifai")
 vignette("poligrams", package = "clarifai")
 ```
 
-
------------------------------------
 ### License
 Scripts are released under [MIT License](https://opensource.org/licenses/MIT).
+
+### Contributor Code of Conduct
+
+To contribute to the project, you must agree to abide by the [Contributor Code of Conduct](http://contributor-covenant.org/version/1/0/0/).
