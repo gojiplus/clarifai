@@ -38,4 +38,4 @@ Scripts are released under [MIT License](https://opensource.org/licenses/MIT).
 
 ### Contributor Code of Conduct
 
-To contribute to the project, you must agree to abide by the [Contributor Code of Conduct](http://contributor-covenant.org/version/1/0/0/).
+To contribute to the project, you must abide by the [Contributor Code of Conduct](http://contributor-covenant.org/version/1/0/0/).
