@@ -34,7 +34,12 @@
 #' @export
 #' @references \url{https://developer.clarifai.com/}
 #' @seealso \code{\link{tag_images}}
+#' 
 #' @examples \dontrun{
+#' 
+#' # Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+#' # and get token via get_token()
+#' 
 #' tag_image_urls(img_urls="url_of_image")
 #' tag_image_urls("https://samples.clarifai.com/metro-north.jpg")
 #' tag_image_urls("https://samples.clarifai.com/metro-north.jpg", language="es")
@@ -44,9 +49,9 @@
 tag_image_urls <- function(img_urls=NULL, model=NULL, language = NULL, meta=FALSE, simplify=TRUE, ...) {
     
     if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
-
-    clarifai_check_token()
     
+    clarifai_check_token()
+
     query <- as.list(img_urls)
     names(query) <- rep("url", length(query))
     query$model <- model 

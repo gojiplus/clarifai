@@ -17,6 +17,10 @@ Get API usage for the current month and hour
 }
 \examples{
 \dontrun{
+
+# Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+# and get token via get_token()
+
 get_usage()
 }
 }

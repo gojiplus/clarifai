@@ -21,17 +21,22 @@
 #' for each image
 #' 
 #' @export
+#' 
 #' @references \url{https://developer.clarifai.com/}
+#' 
 #' @seealso \code{\link{tag_image_urls}}
+#' 
 #' @examples \dontrun{
+#' 
+#' # Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+#' # and get token via get_token()
+#' 
 #' tag_images(file_paths="path_to_image")
 #' }
 
 
 tag_images <- function(file_paths=NULL, model=NULL, language = NULL, meta=FALSE, simplify=TRUE, ...) {
-	
-    clarifai_check_token()
-        
+	        
     if (! all(file.exists(file_paths))) stop("File Doesn't Exist. Please check the path.", call. = FALSE)
 
     query <- lapply(file_paths, form_file)

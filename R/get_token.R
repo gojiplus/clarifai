@@ -9,13 +9,16 @@
 #' @export
 #' @references \url{https://developer.clarifai.com/}
 #' @examples \dontrun{
+#' 
+#' # Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+#' 
 #' get_token()
 #' }
 
 get_token <- function(...) {
 	
-    clarifai_check_auth()
-
+	clarifai_check_auth()
+	
     token_info <- clarifai_POST(path="token/", query=list(grant_type='client_credentials', client_id=Sys.getenv('ClarifaiId'), client_secret=Sys.getenv('ClarifaiSecret')), ...)
 
 	Sys.setenv(ClarifaiToken = token_info$access_token)

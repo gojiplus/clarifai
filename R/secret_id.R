@@ -8,9 +8,13 @@
 #' @param appdetails A vector of client_id, client_secret. Get these from \url{https://developer.clarifai.com/}. 
 #' Set them before you use other functions.
 #' @param force force reset client id and secret
+#' 
 #' @keywords Sets Client ID and Secret
+#' 
 #' @export
+#' 
 #' @references \url{https://developer.clarifai.com/}
+#' 
 #' @examples \dontrun{
 #' setapp(c("client_id", "client_secret"))
 #' }

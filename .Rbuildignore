@@ -6,6 +6,7 @@ appveyor.yml
 ^dev$
 ^cran-comments.md$
 ^codecov.yml$
+^revdep$
 ^tests\testthat\clarifai_secret_id.enc$
 ^.gitignore$
 ^.gitattributes$

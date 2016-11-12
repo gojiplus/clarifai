@@ -50,6 +50,10 @@ Tag Images on the Computer
 }
 \examples{
 \dontrun{
+
+# Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+# and get token via get_token()
+
 tag_images(file_paths="path_to_image")
 }
 }

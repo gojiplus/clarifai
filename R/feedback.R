@@ -18,16 +18,20 @@
 #' @references \url{https://developer.clarifai.com/guide/}
 #' 
 #' @examples \dontrun{
+#' 
+#' # Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+#' # and get token via get_token()
+#' 
 #' feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="suggested_tag")
 #' }
 #' 
 
 feedback <- function(file_path = "", feedback_type='add_tags', feedback_value="", ...) {
    
-    clarifai_check_token()
-
     if(!file.exists(file_path)) stop("File doesn't exist. Please check file_path again.", call. = FALSE)
     if(identical(feedback_value, "")) stop("Please provide something other than an empty string as feedback.", call. = FALSE)
+
+    clarifai_check_token()
 
     h <- new_handle()
 	handle_setopt(h,  customrequest = "POST")

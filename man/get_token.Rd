@@ -17,6 +17,9 @@ Once you have set your Application ID and Secret via \code{\link{secret_id}}, ge
 }
 \examples{
 \dontrun{
+
+# Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+
 get_token()
 }
 }

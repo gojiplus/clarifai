@@ -50,6 +50,10 @@ Tag Remote Images
 }
 \examples{
 \dontrun{
+
+# Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+# and get token via get_token()
+
 tag_image_urls(img_urls="url_of_image")
 tag_image_urls("https://samples.clarifai.com/metro-north.jpg")
 tag_image_urls("https://samples.clarifai.com/metro-north.jpg", language="es")

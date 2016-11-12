@@ -17,6 +17,10 @@
 #' @references \url{https://developer.clarifai.com/}
 #' 
 #' @examples \dontrun{
+#' 
+#' # Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+#' # and get token via get_token()
+#' 
 #' get_color_urls("https://samples.clarifai.com/metro-north.jpg")
 #' get_color_urls(c("https://samples.clarifai.com/metro-north.jpg", 
 #' 					"https://samples.clarifai.com/metro-north.jpg"))
@@ -25,7 +29,7 @@
 get_color_urls <- function(img_urls=NULL, meta=FALSE, ...) {
 
 	if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
-
+	
 	clarifai_check_token()
     
     query <- as.list(img_urls)

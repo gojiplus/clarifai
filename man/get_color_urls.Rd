@@ -26,6 +26,10 @@ Get the dominant colors present in images or videos
 }
 \examples{
 \dontrun{
+
+# Before calling the function, set API secret and id via secret_id(c("client_id", "secret")) 
+# and get token via get_token()
+
 get_color_urls("https://samples.clarifai.com/metro-north.jpg")
 get_color_urls(c("https://samples.clarifai.com/metro-north.jpg", 
 					"https://samples.clarifai.com/metro-north.jpg"))

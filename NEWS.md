@@ -1,4 +1,8 @@
-# clarifai 0.4
+# clarifai 0.4.1
+
+* Added a comment asking people to call secret_id() and get_token() in each example
+
+# clarifai 0.4.0
 
 * Rationalized internals. GET and POST abstracted out, except for feedback
 * Better documentation.
