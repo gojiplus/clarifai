@@ -66,4 +66,3 @@ tag_image_urls("https://samples.clarifai.com/nsfw.jpg", model="nsfw-v1.0")
 \seealso{
 \code{\link{tag_images}}
 }
-

@@ -2,8 +2,8 @@
 % Please edit documentation in R/clarifai.R
 \docType{package}
 \name{clarifai-package}
-\alias{clarifai}
 \alias{clarifai-package}
+\alias{clarifai}
 \title{clarifai: Get Description of (Moving) Images}
 \description{
 Get Description of Images. Understand what is in the images. See \url{http://clarifai.com/}. 
@@ -12,10 +12,9 @@ Details about results of calls to the API can be found at \url{https://developer
 Your need credentials to use this application. 
 If you haven't already, you can get this at \url{https://developer.clarifai.com/}.
 }
-\author{
-Gaurav Sood
-}
 \seealso{
 \code{\link{get_token}}
 }
-
+\author{
+Gaurav Sood
+}

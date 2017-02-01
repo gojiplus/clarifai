@@ -63,4 +63,3 @@ tag_images(file_paths="path_to_image")
 \seealso{
 \code{\link{tag_image_urls}}
 }
-

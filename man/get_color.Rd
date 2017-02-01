@@ -33,4 +33,3 @@ get_color(file_paths="path_to_image")
 \references{
 \url{https://developer.clarifai.com/}
 }
-

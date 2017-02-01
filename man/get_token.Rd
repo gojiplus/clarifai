@@ -26,4 +26,3 @@ get_token()
 \references{
 \url{https://developer.clarifai.com/}
 }
-

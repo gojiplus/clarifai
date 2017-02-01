@@ -37,4 +37,3 @@ feedback(file_path="path_to_image", feedback_type="add_tags", feedback_value="su
 \references{
 \url{https://developer.clarifai.com/guide/}
 }
-

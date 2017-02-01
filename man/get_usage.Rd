@@ -27,4 +27,3 @@ get_usage()
 \references{
 \url{https://developer.clarifai.com/}
 }
-

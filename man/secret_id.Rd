@@ -32,4 +32,3 @@ setapp(c("client_id", "client_secret"))
 \keyword{Secret}
 \keyword{Sets}
 \keyword{and}
-

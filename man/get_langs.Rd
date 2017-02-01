@@ -27,4 +27,3 @@ get_langs()
 \references{
 \url{https://developer.clarifai.com/}
 }
-

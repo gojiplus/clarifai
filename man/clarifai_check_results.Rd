@@ -12,4 +12,3 @@ clarifai_check_results(res)
 \description{
 Check results
 }
-

@@ -32,4 +32,3 @@ get_info()
 \references{
 \url{https://developer.clarifai.com/}
 }
-

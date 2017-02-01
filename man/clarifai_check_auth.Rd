@@ -9,4 +9,3 @@ clarifai_check_auth()
 \description{
 Check if authentication information is in the environment
 }
-

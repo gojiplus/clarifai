@@ -38,4 +38,3 @@ get_color_urls(c("https://samples.clarifai.com/metro-north.jpg",
 \references{
 \url{https://developer.clarifai.com/}
 }
-
