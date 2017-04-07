@@ -22,7 +22,8 @@ get_token <- function(...) {
     token_info <- clarifai_POST(path="token/", query=list(grant_type='client_credentials', client_id=Sys.getenv('ClarifaiId'), client_secret=Sys.getenv('ClarifaiSecret')), ...)
 
 	Sys.setenv(ClarifaiToken = token_info$access_token)
-	return(invisible(token_info))
+
+	token_info
 
 }
 

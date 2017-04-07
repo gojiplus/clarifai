@@ -61,7 +61,7 @@ tag_image_urls <- function(img_urls=NULL, model=NULL, language = NULL, meta=FALS
 	
 	if (tag$status_code!="OK") {
 		print(tag$status)
-		return(invisible(list()))
+		return(list())
 	}
 
 	if (!meta) {
@@ -75,13 +75,13 @@ tag_image_urls <- function(img_urls=NULL, model=NULL, language = NULL, meta=FALS
 		   len <- sapply(probs, length)
 		   tags_probs_imgs <- data.frame(img_urls=rep(img_urls, len), tags_probs)
 		   names(tags_probs_imgs) <- c("img_url", "tags", "probs", "concept_ids")
-		   return(invisible(tags_probs_imgs))
+		   return(tags_probs_imgs)
 		}
 
-		return(invisible(tag$results$result$tag))
+		return(tag$results$result$tag)
 
 	}
 
-	return(invisible(tag))
+	tag
 }
 

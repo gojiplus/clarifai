@@ -62,14 +62,14 @@ tag_images <- function(file_paths=NULL, model=NULL, language = NULL, meta=FALSE,
 		   len <- sapply(probs, length)
 		   tags_probs_imgs <- data.frame(file_paths=rep(file_paths, len), tags_probs)
 		   names(tags_probs_imgs) <- c("file_paths", "tags", "probs", "concept_ids")
-		   return(invisible(tags_probs_imgs))
+		   return(tags_probs_imgs)
 		}
 
-		return(invisible(tag$results$result$tag))
+		return(tag$results$result$tag)
 
 	}
 
-	return(invisible(tag))
+	tag
 
 }
 

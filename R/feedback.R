@@ -49,7 +49,7 @@ feedback <- function(file_path = "", feedback_type='add_tags', feedback_value=""
 	tag        <- fromJSON(rawToChar(tag_con$content))
 	tag
 
-	return(invisible(tag))
+	tag
 
 }
 

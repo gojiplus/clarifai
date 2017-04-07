@@ -39,11 +39,11 @@ get_color_urls <- function(img_urls=NULL, meta=FALSE, ...) {
 
 	if (color$status_code!="OK") {
 		print(color$status)
-		return(invisible(list()))
+		return(list())
 	}
 
-	if (!meta) return(invisible(color$results))
+	if (!meta) return(color$results)
 
-	return(invisible(color))
+	color
 
 }

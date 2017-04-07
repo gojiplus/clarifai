@@ -19,6 +19,6 @@ get_usage <- function(...) {
 		
     usage <- clarifai_GET(path="usage/", query=NULL, ...)
 
-	return(invisible(usage))
+	usage
 
 }

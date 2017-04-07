@@ -23,6 +23,6 @@ get_langs <- function(...) {
 
 	langs <- unname(unlist(info[grepl("languages", names(info))]))
 
-	return(invisible(langs))
+	langs
 
 }

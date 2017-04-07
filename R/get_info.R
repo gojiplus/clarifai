@@ -31,6 +31,6 @@ get_info <- function(...) {
 	# Print some important things
 	cat("Status message: ", info$status_msg, "\n")
 
-	return(invisible(info))
+	info
 
 }

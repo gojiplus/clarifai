@@ -1,3 +1,7 @@
+# clarifai 0.4.2
+
+* Letting go of invisible returns as they seem to confuse people
+
 # clarifai 0.4.1
 
 * Moved clarifai_check_token() to clarifai_GET() for functions that rely on clarifai_GET()

@@ -32,6 +32,6 @@ get_color <- function(file_paths=NULL, ...) {
 
 	color <- clarifai_POST(path="color/", query, ...)
 
-	return(invisible(color))
+	color
 
 }
