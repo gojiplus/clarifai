@@ -46,16 +46,15 @@
 #' tag_image_urls("https://samples.clarifai.com/nsfw.jpg", model="nsfw-v1.0")
 #' }
 
-tag_image_urls <- function(img_urls=NULL, model=NULL, language = NULL, meta=FALSE, simplify=TRUE, ...) {
+tag_image_urls <- function(img_urls = NULL, model = NULL, language = NULL, meta = FALSE, simplify = TRUE, ...) {
     
     if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
     
     clarifai_check_token()
 
-    query <- as.list(img_urls)
+    query        <- as.list(img_urls)
     names(query) <- rep("url", length(query))
-    query$model <- model 
-    query$language <- language
+    query        <- c(query, model = model, language = language)
 
 	tag <- clarifai_POST(path="tag/", query, ...)
 	
@@ -64,16 +63,16 @@ tag_image_urls <- function(img_urls=NULL, model=NULL, language = NULL, meta=FALS
 		return(list())
 	}
 
-	if (!meta) {
+	if (identical(meta, FALSE)) {
 		
-		if (simplify) {
+		if (identical(simplify, TRUE)) {
         
-		   tags  <- lapply(tag$results$result$tag$classes, unlist)
-		   concept_ids <- lapply(tag$results$result$tag$concept_ids, unlist)
-		   probs <- lapply(tag$results$result$tag$probs, unlist)
-		   tags_probs <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
-		   len <- sapply(probs, length)
-		   tags_probs_imgs <- data.frame(img_urls=rep(img_urls, len), tags_probs)
+		   tags            <- lapply(tag$results$result$tag$classes, unlist)
+		   concept_ids     <- lapply(tag$results$result$tag$concept_ids, unlist)
+		   probs           <- lapply(tag$results$result$tag$probs, unlist)
+		   tags_probs      <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
+		   len             <- sapply(probs, length)
+		   tags_probs_imgs <- data.frame(img_urls = rep(img_urls, len), tags_probs)
 		   names(tags_probs_imgs) <- c("img_url", "tags", "probs", "concept_ids")
 		   return(tags_probs_imgs)
 		}

@@ -1,6 +1,6 @@
 Package: clarifai
 Title: Access to Clarifai API
-Version: 0.4.0
+Version: 0.4.2
 Authors@R: person("Gaurav", "Sood", email = "gsood07@gmail.com", role = c("aut", "cre"))
 Maintainer: Gaurav Sood <gsood07@gmail.com>
 Description: Get description of images from Clarifai API. For more information,
