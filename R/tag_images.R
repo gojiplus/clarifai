@@ -35,7 +35,7 @@
 #' }
 
 
-tag_images <- function(file_paths=NULL, model=NULL, language = NULL, meta=FALSE, simplify=TRUE, ...) {
+tag_images <- function(file_paths = NULL, model = NULL, language = NULL, meta = FALSE, simplify = TRUE, ...) {
 	        
     if (! all(file.exists(file_paths))) stop("At least one of the Files Doesn't Exist. Please check the path.", call. = FALSE)
 
