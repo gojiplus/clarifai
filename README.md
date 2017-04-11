@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/soodoku/clarifai.svg?branch=master)](https://travis-ci.org/soodoku/clarifai)
 [![Build status](https://ci.appveyor.com/api/projects/status/4aa0x74ggm51075o?svg=true)](https://ci.appveyor.com/project/soodoku/clarifai)
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/clarifai)](http://cran.r-project.org/package=clarifai)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/clarifai)](https://cran.r-project.org/package=clarifai)
 ![](http://cranlogs.r-pkg.org/badges/grand-total/clarifai)
 [![codecov](https://codecov.io/gh/soodoku/clarifai/branch/master/graph/badge.svg)](https://codecov.io/gh/soodoku/clarifai)
 [![Rdoc](http://www.rdocumentation.org/badges/version/clarifai)](http://www.rdocumentation.org/packages/clarifai)
