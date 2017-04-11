@@ -4,7 +4,7 @@ Version: 0.4.2
 Authors@R: person("Gaurav", "Sood", email = "gsood07@gmail.com", role = c("aut", "cre"))
 Maintainer: Gaurav Sood <gsood07@gmail.com>
 Description: Get description of images from Clarifai API. For more information,
-    see http://clarifai.com. Clarifai uses a large deep learning cloud to come
+    see <http://clarifai.com>. Clarifai uses a large deep learning cloud to come
     up with descriptive labels of the things in an image. It also provides how
     confident it is about each of the labels.
 URL: http://github.com/soodoku/clarifai
