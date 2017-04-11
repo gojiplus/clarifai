@@ -50,8 +50,6 @@ tag_image_urls <- function(img_urls = NULL, model = NULL, language = NULL, meta 
     
     if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
     
-    clarifai_check_token()
-
     query        <- as.list(img_urls)
     names(query) <- rep("url", length(query))
     query        <- c(query, model = model, language = language)

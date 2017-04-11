@@ -26,12 +26,10 @@
 #' 					"https://samples.clarifai.com/metro-north.jpg"))
 #' }
 
-get_color_urls <- function(img_urls=NULL, meta=FALSE, ...) {
+get_color_urls <- function(img_urls = NULL, meta = FALSE, ...) {
 
 	if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
-	
-	clarifai_check_token()
-    
+	    
     query <- as.list(img_urls)
     names(query) <- rep("url", length(query))
 

@@ -1,6 +1,8 @@
 # clarifai 0.4.2
 
 * Letting go of invisible returns as they seem to confuse people
+* Moved clarifai_check_token to POST with exception for get_token
+* 
 
 # clarifai 0.4.1
 

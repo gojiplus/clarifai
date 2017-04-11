@@ -34,6 +34,8 @@ NULL
 clarifai_POST <- 
 function(path, query = NULL, ...) {
 
+	if (path != "token/") clarifai_check_token()
+
 	full_path <- paste0("https://api.clarifai.com/v1/", path)
 
 	h <- new_handle()

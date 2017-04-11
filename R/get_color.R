@@ -25,8 +25,6 @@ get_color <- function(file_paths=NULL, ...) {
         
     if (! all(file.exists(file_paths))) stop("One or more of the files don't exist. Please check the path.", call. = FALSE)
 
-    clarifai_check_token()
-
     query <- lapply(file_paths, form_file)
     names(query) <- rep("encoded_image", length(query))
 
