@@ -56,7 +56,8 @@ tag_images <- function(file_paths = NULL, model = NULL, language = NULL,
        probs           <- lapply(tag$results$result$tag$probs, unlist)
        tags_probs      <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
        len             <- sapply(probs, length)
-       tags_probs_imgs <- data.frame(file_paths = rep(file_paths, len), tags_probs)
+       tags_probs_imgs <- data.frame(file_paths = rep(file_paths, len),
+                                     tags_probs)
        names(tags_probs_imgs) <- c("file_paths", "tags", "probs", "concept_ids")
        return(tags_probs_imgs)
     }

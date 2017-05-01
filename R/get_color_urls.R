@@ -28,7 +28,8 @@
 
 get_color_urls <- function(img_urls = NULL, meta = FALSE, ...) {
 
-  if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
+  if (is.null(img_urls)) stop("Please specify a valid image url.",
+                              call. = FALSE)
 
   query <- as.list(img_urls)
   names(query) <- rep("url", length(query))
