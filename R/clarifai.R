@@ -31,24 +31,24 @@ NULL
 #' @return list
 #' 
 
-clarifai_POST <- 
-function(path, query = NULL, ...) {
+clarifai_POST <- function(path, query = NULL, ...) {
 
-	if (path != "token/") clarifai_check_token()
+  if (path != "token/") clarifai_check_token()
 
-	full_path <- paste0("https://api.clarifai.com/v1/", path)
+  full_path <- paste0("https://api.clarifai.com/v1/", path)
 
-	h <- new_handle()
-	handle_setopt(h,  customrequest = "POST")
-	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
-	handle_setform(h, .list=query)
+  h <- new_handle()
+  handle_setopt(h,  customrequest = "POST")
+  handle_setheaders(h, "Authorization" = paste0("Bearer ",
+                                                Sys.getenv("ClarifaiToken")))
+  handle_setform(h, .list = query)
 
-	con    <- curl_fetch_memory(full_path, handle=h, ...)
-	res    <- fromJSON(rawToChar(con$content))
-	
-	clarifai_check_results(res)
+  con    <- curl_fetch_memory(full_path, handle = h, ...)
+  res    <- fromJSON(rawToChar(con$content))
 
-	res
+  clarifai_check_results(res)
+
+  res
 }
 
 #'
@@ -61,23 +61,23 @@ function(path, query = NULL, ...) {
 #' @return list
 #' 
 
-clarifai_GET <- 
-function(path, query, ...) {
+clarifai_GET <- function(path, query, ...) {
 
-	clarifai_check_token()
+  clarifai_check_token()
 
-	full_path <- paste0("https://api.clarifai.com/v1/", path)
+  full_path <- paste0("https://api.clarifai.com/v1/", path)
 
-	h <- new_handle()
-	handle_setopt(h,  customrequest = "GET")
-	handle_setheaders(h, "Authorization" = paste0("Bearer ", Sys.getenv("ClarifaiToken")))
-	
-	con    <- curl_fetch_memory(full_path, handle=h, ...)
-	res    <- fromJSON(rawToChar(con$content))
-	
-	clarifai_check_results(res)
+  h <- new_handle()
+  handle_setopt(h,  customrequest = "GET")
+  handle_setheaders(h, "Authorization" = paste0("Bearer ",
+                                                Sys.getenv("ClarifaiToken")))
 
-	res
+  con    <- curl_fetch_memory(full_path, handle = h, ...)
+  res    <- fromJSON(rawToChar(con$content))
+
+  clarifai_check_results(res)
+
+  res
 }
 
 #' Check if authentication information is in the environment
@@ -85,10 +85,14 @@ function(path, query, ...) {
 
 clarifai_check_auth <- function() {
 
-	app_id = Sys.getenv('ClarifaiId')
-	app_pass = Sys.getenv('ClarifaiSecret')
+  app_id <- Sys.getenv("ClarifaiId")
+  app_pass <- Sys.getenv("ClarifaiSecret")
 
-    if(identical(app_id, "") | identical(app_pass, "")) stop("Please set application token using secret_id(c('app_id', 'app_pass')).\n After that, set token using get_token()")
+  if (identical(app_id, "") | identical(app_pass, "")) {
+
+    stop("Please set application token using secret_id(c('app_id', 'app_pass')).
+         \n After that, set token using get_token()")
+  }
 }
 
 #' Check if authentication token is in the environment
@@ -96,8 +100,9 @@ clarifai_check_auth <- function() {
 
 clarifai_check_token <- function() {
 
-	app_token = Sys.getenv('ClarifaiToken')
-    if(identical(app_token, "")) stop("Please get a token using get_token()")
+  app_token <- Sys.getenv("ClarifaiToken")
+
+  if (identical(app_token, "")) stop("Please get a token using get_token()")
 
 }
 
@@ -106,6 +111,6 @@ clarifai_check_token <- function() {
 
 clarifai_check_results <- function(res) {
 
-	if ("detail" %in% names(res)) print(res$detail)
-	
+  if ("detail" %in% names(res)) print(res$detail)
+
 }

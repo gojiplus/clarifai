@@ -11,6 +11,7 @@ test_that("feedback works well", {
   close(secret_id_file)
 
   get_token()
-  get_info <- feedback(file_path = image, feedback_type='add_tags', feedback_value="Train")
+  get_info <- feedback(file_path = image, feedback_type = "add_tags",
+                       feedback_value = "Train")
   expect_that(get_info, is_a("list"))
 })

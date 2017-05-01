@@ -18,11 +18,10 @@
 #' }
 
 get_langs <- function(...) {
-	
-	info <- clarifai_GET(path="info/languages/", query=NULL, ...)
 
-	langs <- unname(unlist(info[grepl("languages", names(info))]))
+  info <- clarifai_GET(path = "info/languages/", query = NULL, ...)
 
-	langs
+  langs <- unname(unlist(info[grepl("languages", names(info))]))
 
+  langs
 }

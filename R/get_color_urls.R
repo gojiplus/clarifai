@@ -23,25 +23,24 @@
 #' 
 #' get_color_urls("https://samples.clarifai.com/metro-north.jpg")
 #' get_color_urls(c("https://samples.clarifai.com/metro-north.jpg", 
-#' 					"https://samples.clarifai.com/metro-north.jpg"))
+#'           "https://samples.clarifai.com/metro-north.jpg"))
 #' }
 
 get_color_urls <- function(img_urls = NULL, meta = FALSE, ...) {
 
-	if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
-	    
-    query <- as.list(img_urls)
-    names(query) <- rep("url", length(query))
+  if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
 
-	color <- clarifai_POST(path="color/", query, ...)
+  query <- as.list(img_urls)
+  names(query) <- rep("url", length(query))
 
-	if (color$status_code!="OK") {
-		print(color$status)
-		return(list())
-	}
+  color <- clarifai_POST(path = "color/", query, ...)
 
-	if (!meta) return(color$results)
+  if (color$status_code != "OK") {
+    print(color$status)
+    return(list())
+  }
 
-	color
+  if (!meta) return(color$results)
 
+  color
 }

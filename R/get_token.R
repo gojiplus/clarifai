@@ -16,14 +16,15 @@
 #' }
 
 get_token <- function(...) {
-	
-	clarifai_check_auth()
-	
-    token_info <- clarifai_POST(path="token/", query=list(grant_type='client_credentials', client_id=Sys.getenv('ClarifaiId'), client_secret=Sys.getenv('ClarifaiSecret')), ...)
 
-	Sys.setenv(ClarifaiToken = token_info$access_token)
+  clarifai_check_auth()
 
-	token_info
+  token_info <- clarifai_POST(path = "token/",
+                             query = list(grant_type = "client_credentials",
+                             client_id = Sys.getenv("ClarifaiId"),
+                             client_secret = Sys.getenv("ClarifaiSecret")), ...)
 
+  Sys.setenv(ClarifaiToken = token_info$access_token)
+
+  token_info
 }
-

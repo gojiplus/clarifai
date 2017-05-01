@@ -35,35 +35,32 @@
 #' }
 
 
-tag_images <- function(file_paths = NULL, model = NULL, language = NULL, meta = FALSE, simplify = TRUE, ...) {
-	        
-    if (! all(file.exists(file_paths))) stop("At least one of the Files Doesn't Exist. Please check the path.", call. = FALSE)
+tag_images <- function(file_paths = NULL, model = NULL, language = NULL,
+                       meta = FALSE, simplify = TRUE, ...) {
 
-    query        <- lapply(file_paths, form_file)
-	names(query) <- rep("encoded_image", length(query))
-	query        <- c(query, model = model, language = language)
+  if (! all(file.exists(file_paths))) stop("At least one of the Files Doesn't
+                                  Exist. Please check the path.", call. = FALSE)
 
-	tag <- clarifai_POST(path="tag/", query, ...)
+  query        <- lapply(file_paths, form_file)
+  names(query) <- rep("encoded_image", length(query))
+  query        <- c(query, model = model, language = language)
 
-	if (identical(meta, FALSE)) {
-		
-		if (identical(simplify, TRUE)) {
-        
-		   tags            <- lapply(tag$results$result$tag$classes, unlist)
-		   concept_ids     <- lapply(tag$results$result$tag$concept_ids, unlist)
-		   probs           <- lapply(tag$results$result$tag$probs, unlist)
-		   tags_probs      <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
-		   len             <- sapply(probs, length)
-		   tags_probs_imgs <- data.frame(file_paths = rep(file_paths, len), tags_probs)
-		   names(tags_probs_imgs) <- c("file_paths", "tags", "probs", "concept_ids")
-		   return(tags_probs_imgs)
-		}
+  tag <- clarifai_POST(path = "tag/", query, ...)
 
-		return(tag$results$result$tag)
+  if (identical(meta, FALSE)) {
 
-	}
+    if (identical(simplify, TRUE)) {
 
-	tag
-
+       tags            <- lapply(tag$results$result$tag$classes, unlist)
+       concept_ids     <- lapply(tag$results$result$tag$concept_ids, unlist)
+       probs           <- lapply(tag$results$result$tag$probs, unlist)
+       tags_probs      <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
+       len             <- sapply(probs, length)
+       tags_probs_imgs <- data.frame(file_paths = rep(file_paths, len), tags_probs)
+       names(tags_probs_imgs) <- c("file_paths", "tags", "probs", "concept_ids")
+       return(tags_probs_imgs)
+    }
+    return(tag$results$result$tag)
+  }
+  tag
 }
-

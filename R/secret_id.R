@@ -19,31 +19,30 @@
 #' setapp(c("client_id", "client_secret"))
 #' }
 
-secret_id <- function(appdetails=NULL, force=FALSE) {
+secret_id <- function(appdetails = NULL, force = FALSE) {
 
-    env_id <- Sys.getenv('ClarifaiId')
-    env_pass <- Sys.getenv('ClarifaiSecret')
-    
-    # If you cannot find ClarifaiId or ClarifaiSecret in the environment
-    if ((identical(env_id, "") | identical(env_pass, "")) | !force) {
+  env_id <- Sys.getenv("ClarifaiId")
+  env_pass <- Sys.getenv("ClarifaiSecret")
 
-    	# First look for arguments passed in the function
-	    if (!is.null(appdetails)) {
-	        Sys.setenv(ClarifaiId = appdetails[1])
-	        Sys.setenv(ClarifaiSecret = appdetails[2])
-	       }
+  # If you cannot find ClarifaiId or ClarifaiSecret in the environment
+  if ( (identical(env_id, "") | identical(env_pass, "")) | !force) {
 
-		# Else ask user for the details    
-	    else {
-    		message("Couldn't find env var ClarifaiId or ClarifaiSecret. See ?setapp for more details.")
-			message("Please enter your ClarifaiId and press enter:")
-		  	pat <- readline(": ")
-        	Sys.setenv(ClarifaiId = pat)
-        	message("Now please enter your ClarifaiSecret and press enter:")
-		  	pat <- readline(": ")
-        	Sys.setenv(ClarifaiSecret = pat)
-	        }
+    # First look for arguments passed in the function
+    if (!is.null(appdetails)) {
+      Sys.setenv(ClarifaiId = appdetails[1])
+      Sys.setenv(ClarifaiSecret = appdetails[2])
     }
-}
+    # Else ask user for the details
+    else {
 
-   
+      message("Couldn't find env var ClarifaiId or ClarifaiSecret.
+               See ?setapp for more details.")
+      message("Please enter your ClarifaiId and press enter:")
+      pat <- readline(": ")
+      Sys.setenv(ClarifaiId = pat)
+      message("Now please enter your ClarifaiSecret and press enter:")
+      pat <- readline(": ")
+      Sys.setenv(ClarifaiSecret = pat)
+      }
+  }
+}

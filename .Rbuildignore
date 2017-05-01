@@ -12,3 +12,4 @@ appveyor.yml
 ^.gitignore$
 ^.gitattributes$
 ^inst/extdata/lsvrc_results.pdf$
+.lintr

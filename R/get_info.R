@@ -25,12 +25,11 @@
 #' }
 
 get_info <- function(...) {
-	
-	info <- clarifai_GET(path="info/", query=NULL, ...)
 
-	# Print some important things
-	cat("Status message: ", info$status_msg, "\n")
+  info <- clarifai_GET(path = "info/", query = NULL, ...)
 
-	info
+  # Print some important things
+  cat("Status message: ", info$status_msg, "\n")
 
+  info
 }

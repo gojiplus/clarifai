@@ -21,15 +21,17 @@
 #' get_color(file_paths="path_to_image")
 #' }
 
-get_color <- function(file_paths=NULL, ...) {
-        
-    if (! all(file.exists(file_paths))) stop("One or more of the files don't exist. Please check the path.", call. = FALSE)
+get_color <- function(file_paths = NULL, ...) {
 
-    query <- lapply(file_paths, form_file)
-    names(query) <- rep("encoded_image", length(query))
+  if ( !all(file.exists(file_paths))) {
+    stop("One or more of the files don't exist.
+          Please check the path.", call. = FALSE)
+    }
 
-	color <- clarifai_POST(path="color/", query, ...)
+  query <- lapply(file_paths, form_file)
+  names(query) <- rep("encoded_image", length(query))
 
-	color
+  color <- clarifai_POST(path = "color/", query, ...)
 
+  color
 }

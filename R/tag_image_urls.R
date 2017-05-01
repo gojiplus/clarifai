@@ -46,39 +46,38 @@
 #' tag_image_urls("https://samples.clarifai.com/nsfw.jpg", model="nsfw-v1.0")
 #' }
 
-tag_image_urls <- function(img_urls = NULL, model = NULL, language = NULL, meta = FALSE, simplify = TRUE, ...) {
-    
-    if (is.null(img_urls)) stop("Please specify a valid image url.", call. = FALSE)
-    
-    query        <- as.list(img_urls)
-    names(query) <- rep("url", length(query))
-    query        <- c(query, model = model, language = language)
+tag_image_urls <- function(img_urls = NULL, model = NULL, language = NULL,
+                           meta = FALSE, simplify = TRUE, ...) {
 
-	tag <- clarifai_POST(path="tag/", query, ...)
-	
-	if (tag$status_code!="OK") {
-		print(tag$status)
-		return(list())
-	}
+  if (is.null(img_urls)) stop("Please specify a valid image url.",
+                                call. = FALSE)
 
-	if (identical(meta, FALSE)) {
-		
-		if (identical(simplify, TRUE)) {
-        
-		   tags            <- lapply(tag$results$result$tag$classes, unlist)
-		   concept_ids     <- lapply(tag$results$result$tag$concept_ids, unlist)
-		   probs           <- lapply(tag$results$result$tag$probs, unlist)
-		   tags_probs      <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
-		   len             <- sapply(probs, length)
-		   tags_probs_imgs <- data.frame(img_urls = rep(img_urls, len), tags_probs)
-		   names(tags_probs_imgs) <- c("img_url", "tags", "probs", "concept_ids")
-		   return(tags_probs_imgs)
-		}
+  query        <- as.list(img_urls)
+  names(query) <- rep("url", length(query))
+  query        <- c(query, model = model, language = language)
 
-		return(tag$results$result$tag)
+  tag <- clarifai_POST(path = "tag/", query, ...)
 
-	}
+  if (tag$status_code != "OK") {
+    print(tag$status)
+    return(list())
+  }
 
-	tag
+  if (identical(meta, FALSE)) {
+
+    if (identical(simplify, TRUE)) {
+
+       tags            <- lapply(tag$results$result$tag$classes, unlist)
+       concept_ids     <- lapply(tag$results$result$tag$concept_ids, unlist)
+       probs           <- lapply(tag$results$result$tag$probs, unlist)
+       tags_probs      <- do.call(rbind, Map(cbind, tags, probs, concept_ids))
+       len             <- sapply(probs, length)
+       tags_probs_imgs <- data.frame(img_urls = rep(img_urls, len), tags_probs)
+       names(tags_probs_imgs) <- c("img_url", "tags", "probs", "concept_ids")
+       return(tags_probs_imgs)
+    }
+
+    return(tag$results$result$tag)
+  }
+  tag
 }
-
